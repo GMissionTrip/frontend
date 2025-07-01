@@ -1,0 +1,123 @@
+.archive-wrapper {
+  width: 360px;
+  margin: 0 auto;
+  background: #fbfbfb;
+  padding-bottom: 40px;
+}
+.top-bar {
+  position: relative;
+  height: 48px;
+  background: #ffffff;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.top-bar-title {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: Pretendard;
+}
+.menu-icon {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+}
+.menu-line {
+  width: 15px;
+  height: 2px;
+  background: #000;
+  margin-bottom: 4px;
+}
+.sort-button-wrapper {
+  text-align: right;
+  margin: 16px;
+}
+.sort-button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.trip-card {
+  margin: 0 auto 20px;
+  width: 320px;
+  height: 140px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-family: Pretendard;
+}
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(18, 18, 18, 0.0001) 0%, #121212 100%);
+}
+.trip-text {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+.trip-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+.trip-date,
+.trip-location {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.dropdown-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  width: 90px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  color: #0f2e47;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 100;
+}
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+}
+.dropdown-divider {
+  height: 1px;
+  background: #d7d7d7;
+  margin: 0 8px;
+}
+.trip-number {
+  position: absolute;
+  left: -12px;
+  top: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: #0d0c0c;
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
