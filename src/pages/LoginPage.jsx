@@ -5,24 +5,28 @@ import kakaoLogo from "../assets/kakaoLogo.png";
 import logo from "../assets/logo.png";
 import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
+import useKakaoLogin from "@/hooks/useKakaoLogin.mjs";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const { handleKakaoLogin } = useKakaoLogin();
 
-  const handleKakaoLogin = () => {
-    alert("카카오 로그인!");
-  };
-
-  const handleClose = () => {
-    navigate("/");
+  const handleNavigate = (url) => {
+    navigate(url);
   };
 
   return (
-    <LayoutTitleWithActions title="로그인/회원가입" icon={<FaTimes />} onIconClick={handleClose}>
+    <LayoutTitleWithActions
+      title="로그인/회원가입"
+      icon={<FaTimes />}
+      onIconClick={() => handleNavigate("/")}
+    >
       <div className="login-page-wrapper">
         <img src={logo} alt="로고" className="page-logo" />
         <div className="login-container">
-          <button className="browse-as-guest">비회원으로 둘러보기</button>
+          <button className="browse-as-guest" onClick={() => handleNavigate("/others-journeys")}>
+            비회원으로 둘러보기
+          </button>
           <button className="login-kakao" onClick={handleKakaoLogin}>
             <img src={kakaoLogo} alt="카카오 로고" className="kakao-logo" />
             카카오로 3초만에 시작하기
