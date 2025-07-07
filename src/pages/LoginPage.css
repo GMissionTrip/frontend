@@ -1,0 +1,56 @@
+.login-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.page-logo {
+  margin-bottom: 7rem;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.browse-as-guest {
+  width: 90%;
+  font-size: 1rem;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.login-kakao {
+  width: 90%;
+  font-size: 1.1rem;
+  background-color: #ffe812;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.kakao-logo {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.5em;
+  vertical-align: middle;
+  display: inline-block;
+}

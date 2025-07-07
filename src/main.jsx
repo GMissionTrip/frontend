@@ -7,6 +7,5 @@ import MyArchive from "./components/MyArchive";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <App />
-    <MyArchive />
   </BrowserRouter>,
 );
