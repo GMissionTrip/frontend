@@ -8,7 +8,7 @@ const trips = [
     date: "2025.06.05 ~ 2025.06.10",
     location: "Location",
     background:
-      "url('https://images.unsplash.com/photo-1605169987296-28fce84f0b30?fit=crop&w=600&q=80')",
+      "url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?fit=crop&w=600&q=80')",
     isImage: true,
   },
   {
@@ -36,16 +36,6 @@ const trips = [
   },
 ];
 
-// const TopBar = () => (
-//   <div className="top-bar">
-//     <span className="top-bar-title">내 아카이브</span>
-//     <div className="menu-icon">
-//       <div className="menu-line" />
-//       <div className="menu-line" />
-//       <div className="menu-line" />
-//     </div>
-//   </div>
-// );
 const TopBar = () => (
   <div className="top-bar">
     <span className="top-bar-title">내 아카이브</span>
@@ -83,7 +73,6 @@ const TripCard = ({ trip, isOpen, onToggle }) => (
       ⋯
     </div>
     {isOpen && <DropdownMenu />}
-    {trip.id === 1 && <div className="trip-number">1</div>}
   </div>
 );
 
