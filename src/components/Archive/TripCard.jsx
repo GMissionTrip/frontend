@@ -1,14 +1,20 @@
-import React, { useState } from "react";
-
-const DropdownMenu = () => (
-  <div className="dropdown-menu">
-    <div className="dropdown-item">수정하기</div>
+const DropdownMenu = ({ onEditClick, trip, onClose }) => (
+  <div className="dropdown-menu" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="dropdown-item"
+      onClick={() => {
+        onEditClick(trip);
+        if (onClose) onClose();
+      }}
+    >
+      수정하기
+    </div>
     <div className="dropdown-divider" />
     <div className="dropdown-item">삭제하기</div>
   </div>
 );
 
-export const TripCard = ({ trip, isOpen, onToggle, onClick }) => {
+export const TripCard = ({ trip, isOpen, onToggle, onClick, onEditClick }) => {
   return (
     <div className="trip-card" style={{ background: trip.background }}>
       <div onClick={onClick}>
@@ -19,10 +25,16 @@ export const TripCard = ({ trip, isOpen, onToggle, onClick }) => {
           <div className="trip-location">{trip.location}</div>
         </div>
       </div>
-      <div className="dropdown-button" onClick={onToggle}>
+      <div
+        className="dropdown-button"
+        onClick={(e) => {
+          e.stopPropagation();
+          onToggle();
+        }}
+      >
         ⋯
       </div>
-      {isOpen && <DropdownMenu />}
+      {isOpen && <DropdownMenu trip={trip} onEditClick={onEditClick} onClose={onToggle} />}
     </div>
   );
 };

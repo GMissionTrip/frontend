@@ -4,7 +4,7 @@ import { LandingPage } from "./pages/LandingPage";
 import { LoginPage } from "./pages/LoginPage";
 import { MainHomePage } from "./pages/MainHomePage";
 import { OthersJourneyPage } from "./pages/OthersJourneyPage";
-import { MyArchive } from "./pages/MyArchivePade";
+import { MyArchive } from "./pages/MyArchivePage";
 import { MyArchiveDetails } from "./pages/MyArchiveDetailsPage";
 
 function App() {

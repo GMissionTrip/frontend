@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/MyArchive.css";
+import "@/styles/MyArchive.css";
 import { HomeSidebar } from "@/components/common/HomeSidebar";
 import { TripCard } from "@/components/Archive/TripCard";
+import { EditTripModal } from "@/components/Archive/EditTripModal";
 
 // 더미데이터
-const trips = [
+const initialTrips = [
   {
     id: 1,
     title: "여행 제목",
@@ -43,6 +44,8 @@ const trips = [
 export const MyArchive = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [trips, setTrips] = useState(initialTrips);
+  const [editingTrip, setEditingTrip] = useState(null);
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
@@ -54,7 +57,17 @@ export const MyArchive = () => {
   };
 
   const toggleDropdown = (id) => setOpenDropdown(openDropdown === id ? null : id);
+  const handleEditClick = (trip) => {
+    setEditingTrip(trip);
+  };
 
+  const handleCloseModal = () => {
+    setEditingTrip(null);
+  };
+
+  const handleSaveTrip = (updatedTrip) => {
+    setTrips((prev) => prev.map((t) => (t.id === updatedTrip.id ? updatedTrip : t)));
+  };
   return (
     <div className="archive-wrapper">
       <div className="top-bar">
@@ -78,8 +91,13 @@ export const MyArchive = () => {
           isOpen={openDropdown === trip.id}
           onToggle={() => toggleDropdown(trip.id)}
           onClick={() => handleNavigate(`/my-archive/details/${trip.id}`)}
+          onEditClick={handleEditClick}
         />
       ))}
+
+      {editingTrip && (
+        <EditTripModal trip={editingTrip} onClose={handleCloseModal} onSave={handleSaveTrip} />
+      )}
     </div>
   );
 };
