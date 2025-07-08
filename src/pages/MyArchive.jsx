@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/MyArchive.css";
+import { HomeSidebar } from "@/components/common/HomeSidebar";
+import { TripCard } from "@/components/Archive/TripCard";
 
+// 더미데이터
 const trips = [
   {
     id: 1,
@@ -36,62 +40,46 @@ const trips = [
   },
 ];
 
-const TopBar = () => (
-  <div className="top-bar">
-    <span className="top-bar-title">내 아카이브</span>
-    <div className="menu-icon">
-      {[...Array(3)].map((_, i) => (
-        <div key={i} className="menu-line" />
-      ))}
-    </div>
-  </div>
-);
-
-const SortButton = () => (
-  <div className="sort-button-wrapper">
-    <button className="sort-button">정렬 ▾</button>
-  </div>
-);
-
-const DropdownMenu = () => (
-  <div className="dropdown-menu">
-    <div className="dropdown-item">수정하기</div>
-    <div className="dropdown-divider" />
-    <div className="dropdown-item">삭제하기</div>
-  </div>
-);
-
-const TripCard = ({ trip, isOpen, onToggle }) => (
-  <div className="trip-card" style={{ background: trip.background }}>
-    <div className="gradient-overlay" />
-    <div className="trip-text">
-      <div className="trip-title">{trip.title}</div>
-      <div className="trip-date">{trip.date}</div>
-      <div className="trip-location">📍 {trip.location}</div>
-    </div>
-    <div className="dropdown-button" onClick={onToggle}>
-      ⋯
-    </div>
-    {isOpen && <DropdownMenu />}
-  </div>
-);
-
-export default function MyArchive() {
+export const MyArchive = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
+  const handleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   const toggleDropdown = (id) => setOpenDropdown(openDropdown === id ? null : id);
 
   return (
     <div className="archive-wrapper">
-      <TopBar />
-      <SortButton />
+      <div className="top-bar">
+        <span className="top-bar-title">내 아카이브</span>
+        <div className="menu-icon" onClick={handleSidebar}>
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="menu-line" />
+          ))}
+        </div>
+        {isSidebarOpen && <HomeSidebar onClose={handleSidebar} />}
+      </div>
+
+      <div className="sort-button-wrapper">
+        <button className="sort-button">정렬 ▼</button>
+      </div>
+
       {trips.map((trip) => (
         <TripCard
           key={trip.id}
           trip={trip}
           isOpen={openDropdown === trip.id}
           onToggle={() => toggleDropdown(trip.id)}
+          onClick={() => handleNavigate(`/my-archive/details/${trip.id}`)}
         />
       ))}
     </div>
   );
-}
+};

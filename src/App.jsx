@@ -4,7 +4,8 @@ import { LandingPage } from "./pages/LandingPage";
 import { LoginPage } from "./pages/LoginPage";
 import { MainHomePage } from "./pages/MainHomePage";
 import { OthersJourneyPage } from "./pages/OthersJourneyPage";
-import MyArchive from "./pages/MyArchive";
+import { MyArchive } from "./pages/MyArchive";
+import { MyArchiveDetails } from "./pages/MyArchiveDetails";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/others-journeys" element={<OthersJourneyPage />} />
 
       <Route path="/my-archive" element={<MyArchive />} />
+      <Route path="/my-archive/details/:id" element={<MyArchiveDetails />} />
     </Routes>
   );
 }
