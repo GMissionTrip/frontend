@@ -14,10 +14,12 @@ const DropdownMenu = ({ onEditClick, trip, onClose }) => (
   </div>
 );
 
-export const TripCard = ({ trip, isOpen, onToggle, onClick, onEditClick }) => {
+export const TripCard = ({ trip, isOpen, onToggle, onClick, onEditClick, className = "" }) => {
+  console.log("TripCard 렌더됨:", trip);
+
   return (
-    <div className="trip-card" style={{ background: trip.background }}>
-      <div onClick={onClick}>
+    <div className={`trip-card ${className}`} style={{ background: trip.background }}>
+      <div onClick={onClick || (() => {})}>
         <div className="gradient-overlay" />
         <div className="trip-text">
           <div className="trip-title">{trip.title}</div>
@@ -25,16 +27,22 @@ export const TripCard = ({ trip, isOpen, onToggle, onClick, onEditClick }) => {
           <div className="trip-location">{trip.location}</div>
         </div>
       </div>
-      <div
-        className="dropdown-button"
-        onClick={(e) => {
-          e.stopPropagation();
-          onToggle();
-        }}
-      >
-        ⋯
-      </div>
-      {isOpen && <DropdownMenu trip={trip} onEditClick={onEditClick} onClose={onToggle} />}
+
+      {onToggle && (
+        <div
+          className="dropdown-button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggle();
+          }}
+        >
+          ⋯
+        </div>
+      )}
+
+      {isOpen && onToggle && (
+        <DropdownMenu trip={trip} onEditClick={onEditClick} onClose={onToggle} />
+      )}
     </div>
   );
 };

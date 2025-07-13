@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "@/styles/MyArchive.css";
-import { HomeSidebar } from "@/components/common/HomeSidebar";
+import { TopBar } from "@/components/common/TopBar";
 import { TripCard } from "@/components/Archive/TripCard";
 import { EditTripModal } from "@/components/Archive/EditTripModal";
+import "@/styles/MyArchive.css";
+import "@/components/common/TopBar.css";
 
 // 더미데이터
 const initialTrips = [
@@ -44,19 +45,20 @@ const initialTrips = [
 export const MyArchive = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+
   const [trips, setTrips] = useState(initialTrips);
   const [editingTrip, setEditingTrip] = useState(null);
+
   const navigate = useNavigate();
 
-  const handleNavigate = (path) => {
-    navigate(path);
+  const handleNavigate = (path, state) => {
+    navigate(path, { state });
   };
 
   const handleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const toggleDropdown = (id) => setOpenDropdown(openDropdown === id ? null : id);
   const handleEditClick = (trip) => {
     setEditingTrip(trip);
   };
@@ -68,17 +70,13 @@ export const MyArchive = () => {
   const handleSaveTrip = (updatedTrip) => {
     setTrips((prev) => prev.map((t) => (t.id === updatedTrip.id ? updatedTrip : t)));
   };
+
+  // 수정/삭제하기 드롭다운
+  const toggleDropdown = (id) => setOpenDropdown(openDropdown === id ? null : id);
+
   return (
     <div className="archive-wrapper">
-      <div className="top-bar">
-        <span className="top-bar-title">내 아카이브</span>
-        <div className="menu-icon" onClick={handleSidebar}>
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="menu-line" />
-          ))}
-        </div>
-        {isSidebarOpen && <HomeSidebar onClose={handleSidebar} />}
-      </div>
+      <TopBar title="내 아카이브" isSidebarOpen={isSidebarOpen} onToggleSidebar={handleSidebar} />
 
       <div className="sort-button-wrapper">
         <button className="sort-button">정렬 ▼</button>
@@ -90,7 +88,7 @@ export const MyArchive = () => {
           trip={trip}
           isOpen={openDropdown === trip.id}
           onToggle={() => toggleDropdown(trip.id)}
-          onClick={() => handleNavigate(`/my-archive/details/${trip.id}`)}
+          onClick={() => handleNavigate(`/my-archive/details/${trip.id}`, trip)}
           onEditClick={handleEditClick}
         />
       ))}
