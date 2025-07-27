@@ -1,0 +1,120 @@
+.input-trip-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.trip-input-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+}
+
+/* 여행 동반자 그룹 */
+.travel-companion-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.travel-companion-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.travel-companion-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1.5px solid #995cd6;
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.travel-companion-item:hover {
+  background-color: #995cd6;
+  color: #fff;
+}
+
+.travel-companion-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 여행 기간 그룹 */
+.travel-duration-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.calendar-placeholder {
+  height: 50px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-style: italic;
+  user-select: none;
+}
+
+/* 버튼 위치 조정 (아래 고정 + 가운데 정렬) */
+.input-trip-wrapper > button {
+  align-self: center;
+  width: 90%;
+  max-width: 400px;
+  margin-top: 16px;
+}
+
+.input-trip-wrapper {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.trip-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.travel-companion-list,
+.trip-theme-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.travel-companion-item,
+.trip-theme-item {
+  padding: 10px 14px;
+  background-color: #f2f4f6;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.travel-companion-item:hover,
+.trip-theme-item:hover {
+  background-color: #e0e4ea;
+}
+
+.trip-theme-group label {
+  font-weight: 600;
+}
