@@ -1,0 +1,4 @@
+.region {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent; /* 모바일 터치 시 파란 하이라이트 제거 */
+}
