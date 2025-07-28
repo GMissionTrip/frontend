@@ -1,0 +1,133 @@
+.mypage-container {
+  font-family: "Pretendard", sans-serif;
+  background: #fafafa;
+  min-height: 100vh;
+}
+
+.mypage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.back-btn,
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* 프로필 카드 */
+.profile-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-avatar {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.profile-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.profile-info p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* XP 바 */
+.xp-bar {
+  background: #eaeaea;
+  border-radius: 8px;
+  height: 8px;
+  margin: 6px 0;
+  overflow: hidden;
+}
+.xp-progress {
+  /* background: linear-gradient(90deg, #01306f, #00c6ff); */
+  background: #01306f;
+  height: 100%;
+}
+.xp-text {
+  font-size: 12px;
+  color: #777;
+}
+
+/* 버튼 그룹 */
+.mypage-details {
+  margin: 5% 5%;
+}
+.mypage-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+.mypage-buttons button {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.mypage-buttons button.active {
+  background: #01306f;
+  border-color: #01306f;
+  color: #fff;
+}
+
+.mypage-buttons button:not(.active):hover {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* 배지 */
+.badge-section h4 {
+  margin-bottom: 8px;
+}
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.badge-slot {
+  width: 70px;
+  height: 70px;
+  background: #eee;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 등급 */
+.rank-card {
+  margin-top: 20px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.rank-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 8px;
+}
