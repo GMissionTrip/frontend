@@ -23,7 +23,7 @@ export const LandingPage = () => {
               나만의 이야기가 되는 공간
             </span>
           </div>
-          <img src={logo} alt="로고" className="logo" />
+          <img src={logo} alt="로고" className="mainLogo" />
         </div>
         {isSidebarOpen && <Sidebar onClose={handleSidebar} />}
       </div>
