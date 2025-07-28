@@ -6,10 +6,7 @@ import { TopBar } from "@/components/common/TopBar";
 export const MyArchiveDetails = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [expandedIds, setExpandedIds] = useState(new Set());
-  const [photos, setPhotos] = useState([
-    "https://picsum.photos/600/400",
-    "https://picsum.photos/600/401",
-  ]);
+  const [photos, setPhotos] = useState([]);
 
   const mapRef = useRef(null);
 
@@ -72,11 +69,6 @@ export const MyArchiveDetails = () => {
     },
   ];
 
-  // const photos = [
-  //   "https://picsum.photos/600/400",
-  //   "https://picsum.photos/600/400",
-  //   "https://picsum.photos/600/400",
-  // ];
   if (!trip) {
     return <div>여행 정보가 없습니다.</div>;
   }
@@ -119,12 +111,17 @@ export const MyArchiveDetails = () => {
       return next;
     });
   };
+
   const handleAddPhoto = (e) => {
     const files = Array.from(e.target.files);
     if (!files.length) return;
 
     const newPhotos = files.map((file) => URL.createObjectURL(file));
     setPhotos((prev) => [...prev, ...newPhotos]);
+  };
+
+  const handleDeletePhoto = (index) => {
+    setPhotos((prev) => prev.filter((_, i) => i !== index));
   };
   return (
     <>
@@ -188,14 +185,17 @@ export const MyArchiveDetails = () => {
               onChange={handleAddPhoto}
             />
           </label>
-        </div>
 
-        {/* 업로드된 사진 */}
-        {photos.map((p, idx) => (
-          <div className="photo-box" key={idx}>
-            <img src={p} alt={`photo-${idx}`} />
-          </div>
-        ))}
+          {/* 업로드된 사진 */}
+          {photos.map((p, idx) => (
+            <div className="photo-box" key={idx}>
+              <img src={p} alt={`photo-${idx}`} />
+              <button className="delete-btn" onClick={() => handleDeletePhoto(idx)}>
+                ×
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* 공유 버튼 */}

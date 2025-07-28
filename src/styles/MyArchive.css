@@ -256,7 +256,7 @@
 }
 
 .photo-grid {
-  display: flex;
+  width: auto;
   gap: 10px;
 }
 
@@ -411,6 +411,7 @@
 
 .mission-img img {
   width: 100%;
+  height: auto;
   border-radius: 8px;
   margin-bottom: 6px;
 }
@@ -452,9 +453,10 @@
 }
 
 .photo-grid {
-  display: flex;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 8px;
+  display: flex; /* 가로 배치 */
+  align-items: center; /* 수직 정렬 */
+  gap: 10px; /* 간격 */
+  overflow-x: auto; /* 넘칠 때 가로 스크롤 */
 }
 
 .photo-add {
@@ -469,6 +471,7 @@
   color: #999;
   cursor: pointer;
   transition: border-color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .photo-add:hover {
@@ -479,7 +482,35 @@
 .photo-box img {
   width: 100px;
   height: 100px;
-  display: flex;
   object-fit: cover;
   border-radius: 8px;
+}
+.photo-box {
+  position: relative;
+  flex: 0 0 var(--photo-size);
+  width: var(--photo-size);
+  height: var(--photo-size);
+}
+
+/* 삭제 버튼 */
+.delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  padding: 0;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
