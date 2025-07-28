@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TopBar } from "@/components/common/TopBar";
 import { TripCard } from "@/components/Archive/TripCard";
 import { EditTripModal } from "@/components/Archive/EditTripModal";
-import "@/styles/MyArchive.css";
+import "./MyArchivePage.css";
 import "@/components/common/TopBar.css";
 
 // 더미데이터
