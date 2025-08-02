@@ -1,0 +1,15 @@
+.top-bar {
+  position: relative;
+  height: 48px;
+  background: #ffffff;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.top-bar-title {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: Pretendard;
+}
