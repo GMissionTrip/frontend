@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import { TopBar } from "@/components/common/TopBar";
 import "./MyPage.css";
 import "@/components/common/TopBar.css";
+import useUser from "@/hooks/useUser.mjs";
+import { Navigate } from "react-router-dom";
 
 export const MyPage = () => {
+  const { user } = useUser();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(null); // 현재 선택된 탭
 
   const badges = Array(8).fill(null); // 예시용 8개의 배지 슬롯
   const xp = 2400;
   const maxXp = 3000;
+
+  if (!user) return <Navigate to="/login" replace />;
 
   const handleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
