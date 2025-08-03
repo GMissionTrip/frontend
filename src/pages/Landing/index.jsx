@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "@/assets/logo.png";
 import "./styles.css";
-import { Sidebar } from "@/components/Landing/sidebar";
+import { Sidebar } from "@/components/Landing/Sidebar";
 import { FaBars } from "react-icons/fa";
 
 export const LandingPage = () => {
