@@ -7,6 +7,8 @@ export const LayoutTitleWithActions = ({
   onIconClick,
   leftIcon,
   onLeftIconClick,
+  rightIcon,
+  onRightIconClick,
   children,
 }) => {
   return (
@@ -18,6 +20,11 @@ export const LayoutTitleWithActions = ({
           </div>
         )}
         <div className="title">{title}</div>
+        {rightIcon && (
+          <div className="right-icon" onClick={onRightIconClick}>
+            {rightIcon}
+          </div>
+        )}
         {icon && (
           <div className="title-btn" onClick={onIconClick}>
             {icon}

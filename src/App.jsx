@@ -1,12 +1,12 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { LandingPage } from "./pages/LandingPage";
+import { LandingPage } from "./pages/Landing";
 import { LoginPage } from "./pages/Login";
-import { OthersJourneyPage } from "./pages/OthersJourneyPage";
+import { OthersJourneyPage } from "./pages/OthersJourney";
 import { MyArchive } from "./pages/MyArchivePage";
 import { MyArchiveDetails } from "./pages/MyArchiveDetailsPage";
-import { InputTripInfo1 } from "./pages/InputTripInfo1";
-import { InputTripInfo2 } from "./pages/InputTripInfo2";
+import { InputTripInfo1 } from "./pages/InputTripInfo/InputTripInfo1";
+import { InputTripInfo2 } from "./pages/InputTripInfo/InputTripInfo2";
 import { MyPage } from "./pages/MyPage";
 import Notification from "./pages/Notification";
 import { MainHomePage } from "./pages/Main";

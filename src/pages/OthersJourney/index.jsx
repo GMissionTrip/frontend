@@ -1,10 +1,10 @@
 import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaRegUser } from "react-icons/fa";
+import { FaArrowLeft, FaRegUser } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
 import OtherTravelCard from "@/components/common/OtherTravelCard";
-import "./OthersJourneyPage.css";
+import "./styles.css";
 
 export const OthersJourneyPage = () => {
   const navigate = useNavigate();
@@ -55,6 +55,10 @@ export const OthersJourneyPage = () => {
   return (
     <LayoutTitleWithActions
       title={"다른 사람의 이야기"}
+      leftIcon={<FaArrowLeft />}
+      onLeftIconClick={() => {
+        navigate("/main");
+      }}
       icon={<FaRegUser />}
       onIconClick={() => navigate("/login")}
     >

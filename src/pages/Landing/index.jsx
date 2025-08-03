@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import logo from "../assets/logo.png";
-import hamburgerBtn from "../assets/hamburgerBtn.png";
-import "./LandingPage.css";
+import logo from "@/assets/logo.png";
+import "./styles.css";
 import { Sidebar } from "@/components/Landing/sidebar";
+import { FaBars } from "react-icons/fa";
 
 export const LandingPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -14,7 +14,7 @@ export const LandingPage = () => {
   return (
     <div className="landing-container">
       <div className="overlay">
-        <img src={hamburgerBtn} alt="메뉴" className="hamburger-btn" onClick={handleSidebar} />
+        <FaBars alt="메뉴" className="hamburger-btn" onClick={handleSidebar} />
         <div className="center-content">
           <div className="text">
             <span className="floating-text">

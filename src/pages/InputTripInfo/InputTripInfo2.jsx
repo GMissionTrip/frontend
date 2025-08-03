@@ -1,19 +1,28 @@
 import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
-import placeIcon from "../assets/placeIcon.png";
+import placeIcon from "@/assets/placeIcon.png";
 import { BottomFullFilledButton } from "@/components/common/BottomFullFilledButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import "./InputTripInfo2.css";
+import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export const InputTripInfo2 = () => {
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(null);
   const tripThemes1 = ["자연", "도시", "역사", "바다", "산"];
   const tripThemes2 = ["맛집 탐방", "휴식", "액티비티", "문화 체험", "인스타 핫플"];
   const tripWith = ["나홀로", "연인과", "친구와", "아기와", "어르신과", "반려동물과"];
 
   return (
-    <LayoutTitleWithActions title="여행 정보 입력">
+    <LayoutTitleWithActions
+      title="여행 정보 입력"
+      leftIcon={<FaArrowLeft />}
+      onLeftIconClick={() => {
+        navigate("/input-trip-info1");
+      }}
+    >
       <div className="input-trip-wrapper">
         <div className="trip-input-section">
           <div className="travel-companion-group">

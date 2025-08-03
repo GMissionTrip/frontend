@@ -49,3 +49,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.right-icon {
+  position: absolute;
+  right: 3.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

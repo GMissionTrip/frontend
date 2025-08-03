@@ -3,8 +3,9 @@ import "./InputTripInfo1.css";
 import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
 import { BottomFullFilledButton } from "@/components/common/BottomFullFilledButton";
 import { GangwonMap } from "@/components/GangwonMap";
-import placeIcon from "../assets/placeIcon.png";
+import placeIcon from "@/assets/placeIcon.png";
 import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 export const InputTripInfo1 = () => {
   const [selectedRegion, setSelectedRegion] = useState("");
@@ -16,7 +17,13 @@ export const InputTripInfo1 = () => {
   }, []);
 
   return (
-    <LayoutTitleWithActions title="여행 정보 입력">
+    <LayoutTitleWithActions
+      title="여행 정보 입력"
+      leftIcon={<FaArrowLeft />}
+      onLeftIconClick={() => {
+        navigate("/main");
+      }}
+    >
       <div className="input-trip-wrapper">
         <div className="trip-input-section">
           <div className="trip-input-group">
