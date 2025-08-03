@@ -31,7 +31,7 @@ const Notification = () => {
       title={"알림"}
       leftIcon={<FaHome />}
       onLeftIconClick={() => {
-        navigate("/");
+        navigate("/main");
       }}
     >
       {notifications.length > 0 ? (

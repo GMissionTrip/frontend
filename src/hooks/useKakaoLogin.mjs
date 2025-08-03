@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import useUser from "./useUser.mjs";
 
 const useKakaoLogin = () => {
   const navigate = useNavigate();
+  const { setUser } = useUser();
 
   const handleKakaoLogin = () => {
     const kakao = window.Kakao;
@@ -11,10 +13,22 @@ const useKakaoLogin = () => {
     }
 
     kakao.Auth.login({
-      success: (authObj) => {
-        console.log("카카오 로그인 성공", authObj);
-        // access_token -> 백엔드로 보내서 JWT 발급 요청 등 처리
-        navigate("/main");
+      success: async (authObj) => {
+        const accessToken = authObj.access_token;
+
+        try {
+          const res = await fetch("https://kapi.kakao.com/v2/user/me", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          const userData = await res.json();
+          setUser(userData);
+          navigate("/main");
+        } catch (err) {
+          console.error("백엔드 인증 실패", err);
+        }
       },
       fail: (err) => {
         console.error("카카오 로그인 실패", err);

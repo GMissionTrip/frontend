@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { LandingPage } from "./pages/LandingPage";
-import { LoginPage } from "./pages/LoginPage";
+import { LoginPage } from "./pages/Login";
 import { OthersJourneyPage } from "./pages/OthersJourneyPage";
 import { MyArchive } from "./pages/MyArchivePage";
 import { MyArchiveDetails } from "./pages/MyArchiveDetailsPage";
