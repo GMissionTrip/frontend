@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import hamburgerBtn from "../assets/hamburgerBtn.png";
-import sampleImage from "../assets/sample.png";
-import logo from "../assets/logoSmall.png";
+import sampleImage from "@/assets/sample.png";
+import logo from "@/assets/logoSmall.png";
 import { Sidebar } from "@/components/Landing/Sidebar";
-import "./MainHomePage.css";
 import { TravelCard } from "@/components/common/TravelCard";
+import { FaBell } from "react-icons/fa";
+import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
+import { useNavigate } from "react-router-dom";
+import "./styles.css";
 
 export const MainHomePage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -24,12 +27,13 @@ export const MainHomePage = () => {
   ];
 
   return (
-    <div className="main-page">
-      <div className="appBar">
-        <img src={logo} alt="로고" className="logo" />
-        <img src={hamburgerBtn} alt="메뉴" className="hamburger-btn" onClick={handleSidebar} />
-      </div>
-
+    <LayoutTitleWithActions
+      title={<img src={logo} alt="로고" />}
+      icon={<FaBell />}
+      onIconClick={() => {
+        navigate("/notification");
+      }}
+    >
       <div className="section now-travel">
         <h2>현재 진행 중인 여행</h2>
         <TravelCard {...nowTravel} size="large" />
@@ -50,6 +54,6 @@ export const MainHomePage = () => {
       <button className="plus-btn">+</button>
 
       {isSidebarOpen && <Sidebar onClose={handleSidebar} />}
-    </div>
+    </LayoutTitleWithActions>
   );
 };
