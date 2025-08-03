@@ -5,12 +5,18 @@ import { Sidebar } from "@/components/Landing/Sidebar";
 import { TravelCard } from "@/components/common/TravelCard";
 import { FaBell } from "react-icons/fa";
 import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./styles.css";
+import useUser from "@/hooks/useUser.mjs";
 
 export const MainHomePage = () => {
+  const { user } = useUser();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   const handleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -28,7 +34,7 @@ export const MainHomePage = () => {
 
   return (
     <LayoutTitleWithActions
-      title={<img src={logo} alt="로고" />}
+      title={<img src={logo} alt="로고" width={40} />}
       icon={<FaBell />}
       onIconClick={() => {
         navigate("/notification");
@@ -49,7 +55,9 @@ export const MainHomePage = () => {
       </div>
 
       <div className="footer-buttons">
-        <button className="explore-btn">다른 사람들의 여행 구경하기</button>
+        <button className="explore-btn" onClick={() => navigate("/others-journeys")}>
+          다른 사람들의 여행 구경하기
+        </button>
       </div>
       <button className="plus-btn">+</button>
 

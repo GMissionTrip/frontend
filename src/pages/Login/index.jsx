@@ -1,15 +1,21 @@
 import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import kakaoLogo from "../assets/kakaoLogo.png";
-import logo from "../assets/logo.png";
-import "./LoginPage.css";
-import { useNavigate } from "react-router-dom";
+import kakaoLogo from "@/assets/kakaoLogo.png";
+import logo from "@/assets/logo.png";
+import { Navigate, useNavigate } from "react-router-dom";
 import useKakaoLogin from "@/hooks/useKakaoLogin.mjs";
+import "./styles.css";
+import useUser from "@/hooks/useUser.mjs";
 
 export const LoginPage = () => {
+  const { user } = useUser();
   const navigate = useNavigate();
   const { handleKakaoLogin } = useKakaoLogin();
+
+  if (user) {
+    return <Navigate to="/main" replace />;
+  }
 
   const handleNavigate = (url) => {
     navigate(url);
