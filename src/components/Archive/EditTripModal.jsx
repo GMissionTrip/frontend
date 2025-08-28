@@ -2,22 +2,25 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "@/pages/MyArchive/MyArchivePage";
+import "@/components/Archive/EditTripModal.css";
 
 export const EditTripModal = ({ trip, onClose, onSave }) => {
-  const [title, setTitle] = useState(trip.title);
-  const [location, setLocation] = useState(trip.location);
+  const [title, setTitle] = useState(trip?.title || "");
+  const [location, setLocation] = useState(trip?.location || "");
 
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
 
   useEffect(() => {
+    if (!trip?.date) return;
+
     const [startStr, endStr] = trip.date.split(" - ");
     const parse = (d) => {
       const [year, month, day] = d.split(".");
       return new Date(year, month - 1, day);
     };
     setDateRange([parse(startStr), parse(endStr)]);
-  }, [trip.date]);
+  }, [trip]);
 
   const handleSave = () => {
     const formatDate = (date) =>

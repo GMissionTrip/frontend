@@ -9,7 +9,7 @@ export const MyArchiveDetails = () => {
   const [photos, setPhotos] = useState([]);
 
   const mapRef = useRef(null);
-  const kakaoKey = import.meta.env.VITE_KAKAO_JS_KEY;
+  const kakaoKey = import.meta.env.VITE_KAKAO_MAP_KEY;
 
   const location = useLocation();
   const trip = location.state;
