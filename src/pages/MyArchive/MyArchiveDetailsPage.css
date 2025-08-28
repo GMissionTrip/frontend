@@ -1,0 +1,129 @@
+.mission-photos {
+  margin-top: 10px;
+  padding: 6px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  overflow-x: auto;
+}
+
+/* + 버튼 */
+.mission-photos .photo-add {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border: 2px dashed #01306f;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: #01306f;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mission-photos .photo-add:hover {
+  background: rgba(106, 91, 255, 0.1);
+  transform: scale(1.05);
+}
+.photo-section {
+  margin-top: 15px;
+}
+
+.photo-title {
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.photo-add-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  font-size: 24px;
+  color: #007bff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.photo-box {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 사진 박스 */
+.mission-photos .photo-box {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mission-photos .photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 삭제 버튼 */
+.mission-photos .delete-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  padding: 0;
+}
+
+.mission-photos .delete-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}

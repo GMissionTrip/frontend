@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { TripCard } from "@/components/Archive/TripCard";
 import { TopBar } from "@/components/common/TopBar";
+import { ArchiveMissionCard } from "@/components/Archive/ArchiveMissionCard";
+import "@/pages/MyArchive/MyArchiveDetailsPage.css";
 
 export const MyArchiveDetails = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [expandedIds, setExpandedIds] = useState(new Set());
   const [photos, setPhotos] = useState([]);
 
   const mapRef = useRef(null);
@@ -70,6 +71,10 @@ export const MyArchiveDetails = () => {
     },
   ];
 
+  // 미션별 사진 상태 관리
+  const [missionPhotos, setMissionPhotos] = useState({});
+  const [photoToggles, setPhotoToggles] = useState({});
+
   if (!trip) {
     return <div>여행 정보가 없습니다.</div>;
   }
@@ -104,14 +109,6 @@ export const MyArchiveDetails = () => {
     }
   }, []);
 
-  const toggleExpand = (id) => {
-    setExpandedIds((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
-  };
-
   const handleAddPhoto = (e) => {
     const files = Array.from(e.target.files);
     if (!files.length) return;
@@ -123,6 +120,11 @@ export const MyArchiveDetails = () => {
   const handleDeletePhoto = (index) => {
     setPhotos((prev) => prev.filter((_, i) => i !== index));
   };
+
+  const togglePhotoSection = (missionId) => {
+    setPhotoToggles((prev) => ({ ...prev, [missionId]: !prev[missionId] }));
+  };
+
   return (
     <>
       <TopBar title="상세 정보" isSidebarOpen={isSidebarOpen} onToggleSidebar={handleSidebar} />
@@ -138,45 +140,19 @@ export const MyArchiveDetails = () => {
             <span className="dot" /> {missionGroup.date}
           </div>
 
-          {missionGroup.items.map((m) => {
-            const isOpen = expandedIds.has(m.id);
-            return (
-              <div className="mission-item" key={m.id}>
-                <div className="time-line">
-                  <span className="time-dot" />
-                  <span className="time">{m.time}</span>
-                </div>
-
-                <div className="mission-bubble">
-                  <div className="mission-header">
-                    <span className="mission-title">{m.title}</span>
-                    <button className="detail-link" onClick={() => toggleExpand(m.id)}>
-                      {isOpen ? "접기" : "자세히 보기"}
-                    </button>
-                  </div>
-                  <div className="mission-sub">† {m.place}</div>
-
-                  <div className={`collapse ${isOpen ? "open" : ""}`}>
-                    {m.img && (
-                      <div className="mission-img">
-                        <img src={m.img} alt={m.title} />
-                      </div>
-                    )}
-                    {m.description && <p className="desc">{m.description}</p>}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {missionGroup.items.map((m) => (
+            <ArchiveMissionCard key={m.id} mission={m} />
+          ))}
         </div>
       ))}
-
-      {/* 사진 추가 */}
+      {/* 사진 추가 섹션 */}
       <div className="photo-section">
         <div className="photo-title">간직하고 싶은 사진을 추가해 보세요!</div>
+
         <div className="photo-grid">
-          <label className="photo-add">
-            +{" "}
+          {/* 사진 추가 버튼 */}
+          <label className="photo-add-btn">
+            +
             <input
               type="file"
               multiple
