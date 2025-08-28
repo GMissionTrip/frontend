@@ -9,6 +9,7 @@ export const MyArchiveDetails = () => {
   const [photos, setPhotos] = useState([]);
 
   const mapRef = useRef(null);
+  const kakaoKey = import.meta.env.VITE_KAKAO_JS_KEY;
 
   const location = useLocation();
   const trip = location.state;
@@ -95,8 +96,7 @@ export const MyArchiveDetails = () => {
     } else {
       if (!document.querySelector('script[src*="dapi.kakao.com"]')) {
         const script = document.createElement("script");
-        script.src =
-          "//dapi.kakao.com/v2/maps/sdk.js?appkey=a1695389a580ad3b3491b1d31db7dfbc&autoload=false&libraries=services";
+        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false&libraries=services`;
         script.async = true;
         script.onload = () => window.kakao.maps.load(createMap);
         document.head.appendChild(script);

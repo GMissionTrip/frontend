@@ -15,8 +15,6 @@ const DropdownMenu = ({ onEditClick, trip, onClose }) => (
 );
 
 export const TripCard = ({ trip, isOpen, onToggle, onClick, onEditClick, className = "" }) => {
-  console.log("TripCard 렌더됨:", trip);
-
   return (
     <div className={`trip-card ${className}`} style={{ background: trip.background }}>
       <div onClick={onClick || (() => {})}>
