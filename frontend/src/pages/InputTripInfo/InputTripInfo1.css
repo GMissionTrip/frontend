@@ -1,0 +1,64 @@
+.input-trip-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.trip-input-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.input-trip-wrapper > button {
+  align-self: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.trip-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.trip-input {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.gangwon-map {
+  margin: 20px;
+}
+
+.region {
+  fill: #d0eaff;
+  stroke: #333;
+  stroke-width: 1;
+  cursor: pointer;
+  transition: fill 0.2s;
+}
+.region:hover {
+  fill: #91cfff;
+}
+
+.region.selected {
+  fill: #007bff;
+}
+
+text {
+  font-size: 12px;
+  pointer-events: none;
+  fill: #000;
+}
+
+.selected-region-label {
+  margin-top: 12px;
+  font-weight: bold;
+}
