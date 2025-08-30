@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { FaShareAlt } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import { TripCard } from "@/components/Archive/TripCard";
 import { TopBar } from "@/components/common/TopBar";
@@ -8,9 +9,12 @@ import "@/pages/MyArchive/MyArchiveDetailsPage.css";
 export const MyArchiveDetails = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [photos, setPhotos] = useState([]);
+  const [tab, setTab] = useState("missions");
+  const [shareOpen, setShareOpen] = useState(false);
 
   const mapRef = useRef(null);
   const kakaoKey = import.meta.env.VITE_KAKAO_MAP_KEY;
+  const shareRef = useRef(null);
 
   const location = useLocation();
   const trip = location.state;
@@ -71,16 +75,20 @@ export const MyArchiveDetails = () => {
     },
   ];
 
-  // 미션별 사진 상태 관리
-  const [missionPhotos, setMissionPhotos] = useState({});
-  const [photoToggles, setPhotoToggles] = useState({});
-
-  if (!trip) {
-    return <div>여행 정보가 없습니다.</div>;
-  }
-
   const handleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleAddPhoto = (e) => {
+    const files = Array.from(e.target.files);
+    if (!files.length) return;
+
+    const newPhotos = files.map((file) => URL.createObjectURL(file));
+    setPhotos((prev) => [...prev, ...newPhotos]);
+  };
+
+  const handleDeletePhoto = (index) => {
+    setPhotos((prev) => prev.filter((_, i) => i !== index));
   };
 
   useEffect(() => {
@@ -109,21 +117,21 @@ export const MyArchiveDetails = () => {
     }
   }, []);
 
-  const handleAddPhoto = (e) => {
-    const files = Array.from(e.target.files);
-    if (!files.length) return;
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (shareRef.current && !shareRef.current.contains(event.target)) {
+        setShareOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
-    const newPhotos = files.map((file) => URL.createObjectURL(file));
-    setPhotos((prev) => [...prev, ...newPhotos]);
-  };
-
-  const handleDeletePhoto = (index) => {
-    setPhotos((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const togglePhotoSection = (missionId) => {
-    setPhotoToggles((prev) => ({ ...prev, [missionId]: !prev[missionId] }));
-  };
+  if (!trip) {
+    return <div>여행 정보가 없습니다.</div>;
+  }
 
   return (
     <>
@@ -133,51 +141,75 @@ export const MyArchiveDetails = () => {
       {/* 지도 띄우기 */}
       <div ref={mapRef} style={{ width: "100%", height: "250px" }}></div>
 
-      {/* 미션 리스트 */}
-      {missions.map((missionGroup) => (
-        <div className="mission-day" key={missionGroup.date}>
-          <div className="mission-date-line">
-            <span className="dot" /> {missionGroup.date}
-          </div>
-
-          {missionGroup.items.map((m) => (
-            <ArchiveMissionCard key={m.id} mission={m} />
-          ))}
-        </div>
-      ))}
-      {/* 사진 추가 섹션 */}
-      <div className="photo-section">
-        <div className="photo-title">간직하고 싶은 사진을 추가해 보세요!</div>
-
-        <div className="photo-grid">
-          {/* 사진 추가 버튼 */}
-          <label className="photo-add-btn">
-            +
-            <input
-              type="file"
-              multiple
-              accept="image/*"
-              style={{ display: "none" }}
-              onChange={handleAddPhoto}
-            />
-          </label>
-
-          {/* 업로드된 사진 */}
-          {photos.map((p, idx) => (
-            <div className="photo-box" key={idx}>
-              <img src={p} alt={`photo-${idx}`} />
-              <button className="delete-btn" onClick={() => handleDeletePhoto(idx)}>
-                ×
-              </button>
-            </div>
-          ))}
-        </div>
+      {/* 탭 네비게이션 */}
+      <div className="tab-menu">
+        <button className={tab === "missions" ? "active" : ""} onClick={() => setTab("missions")}>
+          미션
+        </button>
+        <button className={tab === "photos" ? "active" : ""} onClick={() => setTab("photos")}>
+          사진
+        </button>
       </div>
 
-      {/* 공유 버튼 */}
+      {/* 미션 리스트 */}
+      {tab === "missions" &&
+        missions.map((missionGroup) => (
+          <div className="mission-day" key={missionGroup.date}>
+            <div className="mission-date-line">
+              <span className="dot" /> {missionGroup.date}
+            </div>
+
+            {missionGroup.items.map((m) => (
+              <ArchiveMissionCard key={m.id} mission={m} />
+            ))}
+          </div>
+        ))}
+
+      {/* 사진 추가 섹션 */}
+      {tab === "photos" && (
+        <div className="photo-section">
+          <div className="photo-title">추억 사진 모아보기</div>
+          <div className="photo-grid">
+            {/* 사진 추가 버튼 */}
+            <label className="photo-add-btn">
+              +
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleAddPhoto}
+              />
+            </label>
+
+            {/* 업로드된 사진 */}
+            {photos.map((p, idx) => (
+              <div className="photo-box" key={idx}>
+                <img src={p} alt={`photo-${idx}`} />
+                <button className="delete-btn" onClick={() => handleDeletePhoto(idx)}>
+                  ×
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="share-menu">
-        <button>카카오톡 공유하기</button>
-        <button>링크로 공유하기</button>
+        <div className="share-btn" ref={shareRef} onClick={() => setShareOpen(!shareOpen)}>
+          <FaShareAlt />
+        </div>
+        <div className={`share-dropdown ${shareOpen ? "show" : ""}`}>
+          <button onClick={() => alert("카카오톡 공유")}>카카오톡 공유</button>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              alert("링크가 복사되었습니다!");
+            }}
+          >
+            링크로 공유
+          </button>
+        </div>
       </div>
     </>
   );

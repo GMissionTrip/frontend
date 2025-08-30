@@ -41,13 +41,13 @@ export const ArchiveMissionCard = ({ mission }) => {
         </div>
       </div>
 
-      <button className="toggle-photo-btn" onClick={togglePhoto}>
+      {/* <button className="toggle-photo-btn" onClick={togglePhoto}>
         {isPhotoOpen ? "사진 숨기기" : "사진 추가/보기"}
       </button>
 
       {isPhotoOpen && (
         <MissionPhotos missionId={mission.id} photos={photos} setPhotos={setPhotos} />
-      )}
+      )} */}
     </div>
   );
 };

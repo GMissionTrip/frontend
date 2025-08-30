@@ -8,7 +8,7 @@ import {
 } from "@dnd-kit/sortable";
 import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
-import "./MissionPhotos.css"; // CSS 분리
+import "./MissionPhotos.css";
 
 const SortablePhoto = ({ photo, onDelete }) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
