@@ -2,26 +2,22 @@
   position: fixed;
   left: 0;
   width: 100%;
-  max-height: 80%;
+  max-width: 500px;
+  max-height: 60%;
   bottom: 0;
   background-color: #fff;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
   padding: 16px;
+  border-radius: 20px 20px 0 0;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   touch-action: none;
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
-}
-
-.sheet-header {
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  cursor: grab;
+  overflow: hidden;
 }
 
 .sheet-content {
@@ -29,4 +25,138 @@
   font-size: 14px;
   overflow-y: auto;
   height: calc(100% - 40px);
+}
+
+.drag-handle {
+  width: 40px;
+  height: 4px;
+  background: #ccc;
+  border-radius: 2px;
+  margin: 0 auto 8px;
+}
+.sheet-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.drag-handle {
+  width: 40px;
+  height: 4px;
+  background: #ccc;
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+
+.tab-container {
+  display: flex;
+  gap: 16px;
+}
+
+.tab {
+  padding: 6px 12px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+}
+
+.tab.active {
+  color: #01306f;
+  font-weight: bold;
+}
+
+/* 관광지 카드 */
+.place-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fafafa;
+  border-radius: 14px;
+  padding: 22px 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.place-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.place-info h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+.tag {
+  font-size: 12px;
+  color: #666;
+}
+
+.place-card img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-left: 12px;
+}
+
+/* 버튼 스타일 */
+.btn-group {
+  display: flex;
+  gap: 6px;
+}
+
+button {
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-weight: 500;
+}
+
+.btn-outline {
+  background: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.btn-outline:hover {
+  border-color: #999;
+}
+
+.btn-filled {
+  background: #01306f;
+  color: #fff;
+  border: none;
+}
+
+.btn-filled:hover {
+  background: #0145a2;
+}
+
+.sheet-footer {
+  padding: 12px;
+  border-top: 1px solid #eee;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  background: #01306f;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #0145a2;
 }

@@ -21,9 +21,9 @@ export const ArchiveMissionCard = ({ mission }) => {
         <div className="mission-bubble">
           <div className="mission-header">
             <span className="mission-title">{mission.title}</span>
-            <button className="detail-link" onClick={toggleExpand}>
+            <div className="detail-link" onClick={toggleExpand}>
               {isOpen ? "접기" : "자세히 보기"}
-            </button>
+            </div>
           </div>
 
           <div className="mission-sub">† {mission.place}</div>
