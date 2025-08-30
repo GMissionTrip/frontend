@@ -32,6 +32,10 @@ export const MainHomePage = () => {
     date: "2025/06/28 - 2025/06/30",
   };
 
+  const currentTravel = {
+    mission: "해변에서 조개 줍기",
+  };
+
   return (
     <LayoutTitleWithActions
       title={<img src={logo} alt="로고" width={40} />}
@@ -42,10 +46,17 @@ export const MainHomePage = () => {
       rightIcon={<FaBars />}
       onRightIconClick={handleSidebar}
     >
-      <div className="section now-travel">
-        <h2>현재 진행 중인 여행</h2>
-        <TravelCard {...nowTravel} size="large" />
-      </div>
+      {currentTravel ? (
+        <div className="section now-travel" onClick={() => navigate("/current-trip")}>
+          <h2>현재 진행 중인 여행</h2>
+          <TravelCard {...nowTravel} size="large" />
+        </div>
+      ) : (
+        <div className="no-travel">
+          현재 진행중인 여행이 없어요. <br />
+          지금 당장 떠나보세요!
+        </div>
+      )}
 
       <div className="section past-travel">
         <h2>지난 여행 보기</h2>

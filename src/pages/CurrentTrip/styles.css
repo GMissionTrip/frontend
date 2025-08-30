@@ -1,0 +1,350 @@
+.before-trip {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-family: "Pretendard", sans-serif;
+  color: #333;
+}
+
+.before-trip-header {
+  margin-bottom: 1.5rem;
+}
+
+.before-trip-header p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.before-trip-header h2 {
+  margin-top: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.interests {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.interests span {
+  background: #f0f0f0;
+  color: #555;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+}
+
+.travel-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.travel-card:hover {
+  transform: translateY(-4px);
+}
+
+.travel-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.travel-card-content {
+  padding: 1rem;
+}
+
+.travel-card-content p {
+  margin: 0.3rem 0;
+  color: #444;
+}
+
+.travel-card-content h3 {
+  margin: 0.4rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.button-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+}
+
+.button-bar button {
+  flex: 1;
+  margin: 0 0.5rem;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.copy-btn:hover {
+  background: #e0e0e0;
+}
+
+.edit-btn {
+  background: #4f46e5;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #4338ca;
+}
+
+.in-progress-trip {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-family: "Pretendard", sans-serif;
+  color: #333;
+}
+
+.in-progress-trip-header {
+  margin-bottom: 1.5rem;
+}
+
+.in-progress-trip-header p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.in-progress-trip-header h2 {
+  margin-top: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.mission-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mission-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.mission-card:hover {
+  transform: translateY(-4px);
+}
+
+.mission-card.completed {
+  border-color: #4caf50; /* 초록색 테두리 */
+  opacity: 0.9;
+}
+
+.mission-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.mission-card-content {
+  padding: 1rem;
+}
+
+.mission-card-content h3 {
+  margin: 0.4rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.mission-card-content p {
+  margin: 0.2rem 0;
+  color: #444;
+}
+
+.mission-status {
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.mission-status.completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.mission-status.pending {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+.mission-card button {
+  width: calc(100% - 2rem);
+  margin: 0 1rem 1rem;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5; /* 인디고 블루 */
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.mission-card button:hover {
+  background: #4338ca;
+}
+
+.mission-card.completed button {
+  background: #2e7d32; /* 완료된 미션이면 초록색 버튼 */
+}
+
+.mission-card.completed button:hover {
+  background: #1b5e20;
+}
+
+.after-trip {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-family: "Pretendard", sans-serif;
+  color: #333;
+}
+
+/* 대표 이미지 */
+.after-trip img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* 여행 제목 */
+.after-trip h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+/* 여행 기본 정보 */
+.after-trip p {
+  margin: 0.2rem 0;
+  color: #555;
+}
+
+/* 섹션 헤더 */
+.after-trip h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* 미션 요약 리스트 */
+.after-trip ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.after-trip li {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.after-trip li:hover {
+  transform: translateY(-3px);
+}
+
+.after-trip li h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.after-trip li p {
+  margin: 0.2rem 0;
+  color: #666;
+}
+
+/* 버튼 */
+.after-trip button {
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.after-trip button:hover {
+  background: #4338ca;
+}
+
+/* 공유하기 버튼 영역 */
+.button-bar {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.button-bar button {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.copy-btn {
+  background: #995cd6;
+  color: #fff;
+}
+
+.copy-btn:hover {
+  background: #d97706;
+}
+
+.edit-btn {
+  background: #fff;
+  color: #995cd6;
+  border: #995cd6 solid 1px;
+}
+
+.edit-btn:hover {
+  background: #059669;
+}

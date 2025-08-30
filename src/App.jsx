@@ -10,6 +10,7 @@ import { InputTripInfo2 } from "./pages/InputTripInfo/InputTripInfo2";
 import { MyPage } from "./pages/MyPage";
 import Notification from "./pages/Notification";
 import { MainHomePage } from "./pages/Main";
+import { CurrentTrip } from "./pages/CurrentTrip";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path="/input-trip-info1" element={<InputTripInfo1 />} />
       <Route path="/input-trip-info2" element={<InputTripInfo2 />} />
       <Route path="/notification" element={<Notification />} />
+      <Route path="/current-trip" element={<CurrentTrip />} />
     </Routes>
   );
 }
