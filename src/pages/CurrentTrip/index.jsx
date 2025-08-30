@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BeforeTrip } from "./BeforeTrip";
 import { AfterTrip } from "./AfterTrip";
 import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
-import { InProgressTrip } from "./InprogressTrip";
+import { InProgressTrip } from "./InProgressTrip";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
