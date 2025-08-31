@@ -1,0 +1,60 @@
+.sort-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 16px 20px;
+}
+
+.sort-dropdown-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding: 8px 36px 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  cursor: pointer;
+
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.sort-dropdown-btn .chevron {
+  padding-left: 8px;
+  font-size: 12px;
+}
+
+.sort-dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 4px;
+  z-index: 10;
+}
+
+.sort-dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.sort-dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.sort-dropdown-item.active {
+  font-weight: 600;
+  color: #01306f;
+}
