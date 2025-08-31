@@ -62,7 +62,22 @@ export const MainHomePage = () => {
         <h2>지난 여행 보기</h2>
         <div className="scroll-container">
           {pastTravels.map((travel, index) => (
-            <TravelCard key={index} {...travel} size="small" />
+            <div
+              key={index}
+              onClick={() =>
+                navigate(`/my-archive/details/${index + 1}`, {
+                  state: {
+                    id: 2,
+                    title: "여행 제목",
+                    date: "2025.06.05 ~ 2025.06.10",
+                    location: "Location",
+                    background: "#003070",
+                  },
+                })
+              }
+            >
+              <TravelCard {...travel} size="small" />
+            </div>
           ))}
         </div>
       </div>
