@@ -73,7 +73,7 @@ export const InputTripInfo2 = () => {
           label="미션 추천 받기"
           leftIcon={placeIcon}
           disabled={false}
-          onClick={() => alert("버튼 클릭!")}
+          onClick={() => navigate("/select-place")}
         />
       </div>
     </LayoutTitleWithActions>

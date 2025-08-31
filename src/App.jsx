@@ -11,6 +11,7 @@ import { MyPage } from "./pages/MyPage";
 import Notification from "./pages/Notification";
 import { MainHomePage } from "./pages/Main";
 import { CurrentTrip } from "./pages/CurrentTrip";
+import { SelectPlace } from "./pages/InputTripInfo/SelectPlace";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Route path="/input-trip-info2" element={<InputTripInfo2 />} />
       <Route path="/notification" element={<Notification />} />
       <Route path="/current-trip" element={<CurrentTrip />} />
+      <Route path="/select-place" element={<SelectPlace />} />
     </Routes>
   );
 }
