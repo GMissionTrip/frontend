@@ -1,7 +1,9 @@
 import React from "react";
 import "./styles.css";
+import { useKakaoShare } from "@/hooks/useKakaoShare.mjs";
 
 export const AfterTrip = () => {
+  const kakaoShare = useKakaoShare();
   const missionInfo = {
     location: "제주도 여행",
     title: "해변에서 조개 줍기",
@@ -56,12 +58,17 @@ export const AfterTrip = () => {
       <button>기록 모아보기</button>
 
       <h3>공유하기</h3>
-      <button
-        className="copy-btn"
-        onClick={() => navigator.clipboard.writeText(window.location.href)}
-      >
-        링크 복사
-      </button>
+      <div className="button-group">
+        <button
+          className="copy-btn"
+          onClick={() => navigator.clipboard.writeText(window.location.href)}
+        >
+          링크 복사
+        </button>
+        <button id="kakaotalk-share-btn" className="kakao-share-btn" onClick={kakaoShare}>
+          카카오로 공유하기
+        </button>
+      </div>
       <div className="button-bar">
         <button className="edit-btn">아카이브에 저장하기</button>
         <button className="edit-btn">새로운 여행 시작하기</button>
