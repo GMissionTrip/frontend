@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 const MIN_HEIGHT = 100;
@@ -30,6 +31,7 @@ export const BottomModalSheet = () => {
       imageUrl: "https://placehold.co/120x80",
     },
   ]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const max = window.innerHeight * 0.8;
@@ -41,6 +43,7 @@ export const BottomModalSheet = () => {
   // 상세 정보 버튼 클릭
   const handleDetail = (id) => {
     console.log("상세 정보 보기:", id);
+    navigate(`/place-detail/${id}`, { state: { place: places.find((p) => p.id === id) } });
   };
 
   // 관광지 담기 버튼 클릭

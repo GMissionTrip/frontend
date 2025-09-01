@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TopBar } from "@/components/common/TopBar";
 import { TripCard } from "@/components/Archive/TripCard";
 import { EditTripModal } from "@/components/Archive/EditTripModal";
 import { SortDropdown } from "@/components/Archive/SortDropdown";
+import { FaArrowLeft, FaBars } from "react-icons/fa";
+import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
+import { HomeSidebar } from "@/components/common/HomeSidebar";
 
 import "@/components/common/TopBar.css";
 import "@/pages/MyArchive/MyArchivePage.css";
 
-// 더미데이터
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCards } from "swiper";
+import SwiperCore from "swiper";
+
+SwiperCore.use([EffectCards]);
+import "swiper/css";
+import "swiper/css/effect-cards";
+
 const initialTrips = [
   {
     id: 1,
@@ -50,67 +60,95 @@ export const MyArchive = () => {
   const [trips, setTrips] = useState(initialTrips);
   const [editingTrip, setEditingTrip] = useState(null);
   const [sortOption, setSortOption] = useState("latest");
+  const [viewMode, setViewMode] = useState("list");
 
   const navigate = useNavigate();
 
-  const handleNavigate = (path, state) => {
-    navigate(path, { state });
-  };
+  const handleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
-  const handleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const handleEditClick = (trip) => {
-    setEditingTrip(trip);
-  };
-
-  const handleCloseModal = () => {
-    setEditingTrip(null);
-  };
-
+  const handleEditClick = (trip) => setEditingTrip(trip);
+  const handleCloseModal = () => setEditingTrip(null);
   const handleSaveTrip = (updatedTrip) => {
     setTrips((prev) => prev.map((t) => (t.id === updatedTrip.id ? updatedTrip : t)));
   };
-
   const toggleDropdown = (id) => setOpenDropdown(openDropdown === id ? null : id);
 
   const sortedTrips = [...trips].sort((a, b) => {
     if (sortOption === "latest") {
-      // 최근 날짜순
-      const aDate = new Date(a.date.split(" - ")[0]);
-      const bDate = new Date(b.date.split(" - ")[0]);
-      return bDate - aDate;
+      return new Date(b.date.split(" - ")[0]) - new Date(a.date.split(" - ")[0]);
     } else if (sortOption === "oldest") {
-      // 오래된 날짜순
-      const aDate = new Date(a.date.split(" - ")[0]);
-      const bDate = new Date(b.date.split(" - ")[0]);
-      return aDate - bDate;
+      return new Date(a.date.split(" - ")[0]) - new Date(b.date.split(" - ")[0]);
     } else if (sortOption === "title") {
-      // 제목순
       return a.title.localeCompare(b.title, "ko");
     }
     return 0;
   });
+
   return (
     <div className="archive-wrapper">
-      <TopBar title="내 아카이브" isSidebarOpen={isSidebarOpen} onToggleSidebar={handleSidebar} />
+      <LayoutTitleWithActions
+        title="내 아카이브"
+        leftIcon={<FaArrowLeft />}
+        onLeftIconClick={() => navigate("/main")}
+        icon={<FaBars />}
+        onIconClick={handleSidebar}
+      />
 
-      {/* 정렬 선택 */}
+      {isSidebarOpen && <HomeSidebar onClose={handleSidebar} />}
+
+      {/* 뷰 모드 선택 버튼 */}
+      <div className="view-toggle">
+        <div
+          className={`toggle-btn ${viewMode === "list" ? "active" : ""}`}
+          onClick={() => setViewMode("list")}
+        >
+          리스트형
+        </div>
+        <div
+          className={`toggle-btn ${viewMode === "card" ? "active" : ""}`}
+          onClick={() => setViewMode("card")}
+        >
+          카드형
+        </div>
+      </div>
+
       <div className="sort-button-wrapper">
         <SortDropdown sortOption={sortOption} setSortOption={setSortOption} />
       </div>
 
-      {sortedTrips.map((trip) => (
-        <TripCard
-          key={trip.id}
-          trip={trip}
-          isOpen={openDropdown === trip.id}
-          onToggle={() => toggleDropdown(trip.id)}
-          onClick={() => handleNavigate(`/my-archive/details/${trip.id}`, trip)}
-          onEditClick={handleEditClick}
-        />
-      ))}
+      {viewMode === "list" && (
+        <div className="trip-list">
+          {sortedTrips.map((trip) => (
+            <TripCard
+              key={trip.id}
+              trip={trip}
+              isOpen={openDropdown === trip.id}
+              onToggle={() => toggleDropdown(trip.id)}
+              onClick={() => navigate(`/my-archive/details/${trip.id}`, { state: trip })}
+              onEditClick={handleEditClick}
+              viewMode="list"
+            />
+          ))}
+        </div>
+      )}
+
+      {viewMode === "card" && (
+        <Swiper effect={"cards"} grabCursor={true} modules={[EffectCards]} className="mySwiper">
+          {sortedTrips.map((trip) => (
+            <SwiperSlide key={trip.id}>
+              <div
+                className="card-slide"
+                style={{ background: trip.background }}
+                onClick={() => navigate(`/my-archive/details/${trip.id}`, { state: trip })}
+              >
+                <div className="card-title">{trip.title}</div>
+                <div className="card-date">{trip.date}</div>
+                <div className="card-location">{trip.location}</div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
 
       {editingTrip && (
         <EditTripModal trip={editingTrip} onClose={handleCloseModal} onSave={handleSaveTrip} />

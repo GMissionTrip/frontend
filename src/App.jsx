@@ -12,6 +12,7 @@ import Notification from "./pages/Notification";
 import { MainHomePage } from "./pages/Main";
 import { CurrentTrip } from "./pages/CurrentTrip";
 import { SelectPlace } from "./pages/InputTripInfo/SelectPlace";
+import { PlaceDetail } from "./pages/InputTripInfo/PlaceDetail";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path="/notification" element={<Notification />} />
       <Route path="/current-trip" element={<CurrentTrip />} />
       <Route path="/select-place" element={<SelectPlace />} />
+      <Route path="/place-detail/:id" element={<PlaceDetail />} />
     </Routes>
   );
 }

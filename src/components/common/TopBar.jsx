@@ -1,7 +1,7 @@
 import React from "react";
 import { HomeSidebar } from "@/components/common/HomeSidebar";
 
-export const TopBar = ({ title, isSidebarOpen, onToggleSidebar }) => {
+export const TopBar = ({ title, isSidebarOpen, leftIcon, onLeftIconClick, onToggleSidebar }) => {
   return (
     <div className="top-bar">
       <span className="top-bar-title">{title}</span>

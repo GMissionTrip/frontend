@@ -1,9 +1,13 @@
+/* MyArchivePage.css */
+
+/* 전체 아카이브 wrapper */
 .archive-wrapper {
   margin: 0 auto;
   background: #fbfbfb;
   padding-bottom: 40px;
 }
 
+/* 메뉴 아이콘 */
 .menu-icon {
   position: absolute;
   right: 16px;
@@ -16,16 +20,18 @@
   margin-bottom: 4px;
 }
 
+/* 정렬 버튼 */
 .sort-button-wrapper {
   display: flex;
   justify-content: flex-end;
-  margin: 16px 20px;
+  margin: 8px 0;
 }
 
+/* 트립 카드 */
 .trip-card {
   margin: 0 auto 20px;
-  width: 80%;
-  height: 9rem;
+  width: 90%;
+  height: 10rem;
   border-radius: 16px;
   background-size: cover;
   background-position: center;
@@ -66,6 +72,8 @@
   font-size: 12px;
   margin-top: 2px;
 }
+
+/* 드롭다운 */
 .dropdown-button {
   position: absolute;
   top: 10px;
@@ -95,6 +103,8 @@
   background: #d7d7d7;
   margin: 0 8px;
 }
+
+/* 카드 넘버 */
 .trip-number {
   position: absolute;
   left: -12px;
@@ -112,7 +122,7 @@
   align-items: center;
 }
 
-/* 모달창 css */
+/* 모달 */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -135,12 +145,10 @@
   flex-direction: column;
   align-items: center;
 }
-
 .modal-content label {
   display: inline-block;
   margin-bottom: 10px;
 }
-
 .modal-content input {
   padding: 8px;
   width: 70%;
@@ -150,12 +158,13 @@
   margin-bottom: 12px;
   width: auto;
 }
-
 .modal-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
+
+/* 아카이브 컨테이너 */
 .archive-container {
   max-width: 480px;
   margin: auto;
@@ -164,6 +173,7 @@
   color: #333;
 }
 
+/* 아카이브 헤더 */
 .archive-header {
   display: flex;
   justify-content: space-between;
@@ -173,7 +183,6 @@
   font-size: 18px;
   font-weight: bold;
 }
-
 .back-btn,
 .menu-btn {
   background: none;
@@ -181,16 +190,15 @@
   font-size: 20px;
 }
 
+/* 커버 이미지 */
 .cover-image {
   position: relative;
 }
-
 .cover-image img {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
-
 .cover-info {
   position: absolute;
   bottom: 15px;
@@ -199,6 +207,7 @@
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
 }
 
+/* 지도 플레이스홀더 */
 .map-placeholder {
   height: 200px;
   background: #e3e3e3;
@@ -208,12 +217,14 @@
   margin-bottom: 15px;
 }
 
+/* 날짜 라인 */
 .date-line {
   font-weight: bold;
   margin: 7% 5%;
   color: #706682;
 }
 
+/* 미션 아이템 */
 .mission-item {
   background: white;
   border-radius: 8px;
@@ -222,242 +233,50 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.mission-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-
-.mission-sub {
-  font-size: 14px;
-  color: #555;
-}
-
-.detail-link {
-  float: right;
-  color: #0033cc;
-  text-decoration: none;
-}
-
-.mission-img img {
-  margin-top: 8px;
-  width: 100%;
-  border-radius: 5px;
-}
-
-.photo-section {
-  margin: 15px;
-}
-
-.photo-title {
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.photo-grid {
-  width: auto;
-  gap: 10px;
-}
-
-.photo-grid img {
-  width: 80px;
-  height: 80px;
-  border-radius: 6px;
-  object-fit: cover;
-}
-
-.photo-add {
-  width: 80px;
-  height: 80px;
-  background: #ddd;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-}
-
-.share-menu {
-  padding: 10px 15px;
-  display: flex;
-  gap: 10px;
-}
-
-.share-menu button {
-  flex: 1;
-  padding: 10px;
-  background: #eee;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.mission-day {
-  margin-bottom: 30px;
-}
-
-.mission-date-line {
-  font-weight: bold;
-  font-size: 15px;
-  margin: 5% 5%;
-  display: flex;
-  align-items: center;
-  color: #333;
-}
-
-.mission-date-line .dot {
-  width: 8px;
-  height: 8px;
-  background: #6a5bff;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-
-/* 미션 아이템 */
-.mission-item {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.time-line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50px;
-  font-size: 12px;
-  color: #999;
-}
-
-.time-dot {
-  width: 10px;
-  height: 10px;
-  background: #6a5bff;
-  border-radius: 50%;
-  margin-bottom: 5px;
-}
-
-.time {
-  font-size: 12px;
-  color: #666;
-}
-
-/* 말풍선 카드 */
-.mission-bubble {
-  position: relative;
-  flex: 1;
-  background: #fff;
-  border: 1px solid #e5e5ea;
-  border-radius: 12px;
-  padding: 12px 14px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.mission-bubble::before {
-  content: "";
-  position: absolute;
-  left: -9px;
-  top: 18px;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-right: 9px solid #e5e5ea; /* 테두리 */
-}
-
-.mission-bubble::after {
-  content: "";
-  position: absolute;
-  left: -7px;
-  top: 19px;
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
-  border-right: 7px solid #fff; /* 안쪽 흰색 */
-}
-
+/* 미션 헤더 */
 .mission-header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 4px;
 }
 
+/* 미션 텍스트 */
 .mission-title {
   font-weight: 600;
   font-size: 14px;
   color: #2b2b2b;
 }
-
-.detail-link {
-  background: none;
-  border: none;
-  color: #6a5bff;
-  font-size: 13px;
-  cursor: pointer;
-}
-
 .mission-sub {
   font-size: 13px;
   color: #555;
   margin-bottom: 6px;
 }
-
-.collapse {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.collapse.open {
-  max-height: 500px;
-}
-
-.mission-img img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 6px;
-}
-
-.desc {
-  font-size: 13px;
-  color: #444;
-}
-
-/* 펼침 애니메이션 */
-.collapse {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.28s ease;
-}
-.collapse.open {
-  max-height: 1000px; /* 충분히 큰 값 */
-}
-
 .detail-link {
   float: right;
   background: none;
-  border: 0;
+  border: none;
   color: #0033cc;
   cursor: pointer;
   font-size: 14px;
   padding: 0;
 }
 
+/* 사진 섹션 */
 .photo-section {
   margin-top: 20px;
   padding: 10px;
 }
-
 .photo-title {
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 10px;
 }
-
 .photo-grid {
-  display: flex; /* 가로 배치 */
-  align-items: center; /* 수직 정렬 */
-  gap: 10px; /* 간격 */
-  overflow-x: auto; /* 넘칠 때 가로 스크롤 */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
 }
-
 .photo-add {
   width: 100px;
   height: 100px;
@@ -472,12 +291,10 @@
   transition: border-color 0.2s ease;
   flex-shrink: 0;
 }
-
 .photo-add:hover {
   border-color: #6a5bff;
   color: #6a5bff;
 }
-
 .photo-box img {
   width: 100px;
   height: 100px;
@@ -509,7 +326,169 @@
   padding: 0;
   transition: 0.2s;
 }
-
 .delete-btn:hover {
   background: rgba(0, 0, 0, 0.8);
+}
+
+/* Swiper 카드형 */
+.mySwiper {
+  width: 100%;
+  max-width: 400px;
+  /* height: 360px; */
+  margin: 20px auto;
+  perspective: 1200px;
+}
+.mySwiper .swiper-slide {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.mySwiper .swiper-slide:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+.mySwiper .swiper-slide div {
+  padding: 16px;
+  color: #fff;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 18px;
+}
+.mySwiper .swiper-slide div div:first-child {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.mySwiper .swiper-slide div div:nth-child(2),
+.mySwiper .swiper-slide div div:nth-child(3) {
+  font-size: 12px;
+  margin-top: 2px;
+}
+@media (max-width: 480px) {
+  .mySwiper {
+    max-width: 90%;
+    height: 280px;
+  }
+  .mySwiper .swiper-slide div {
+    padding: 12px;
+  }
+  .mySwiper .swiper-slide div div:first-child {
+    font-size: 16px;
+  }
+  .mySwiper .swiper-slide div div:nth-child(2),
+  .mySwiper .swiper-slide div div:nth-child(3) {
+    font-size: 11px;
+  }
+}
+
+/* 뷰 모드 토글 버튼 */
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+  gap: 10px;
+}
+
+.toggle-btn {
+  padding: 6px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #eee;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.toggle-btn.active {
+  font-weight: 700;
+  background: #0033cc;
+  color: #fff;
+}
+
+/* 리스트형 */
+.trip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+/* 카드형 전체 컨테이너 */
+.trip-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+/* 카드형 TripCard */
+.trip-card-cardmode {
+  width: 200px;
+  height: 260px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #fff;
+}
+
+.trip-card-cardmode:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+/* 카드 배경 그라데이션 */
+.trip-card-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+
+/* 카드 텍스트 */
+.trip-card-text {
+  position: absolute;
+  bottom: 16px;
+  left: 12px;
+}
+
+.trip-card-text .trip-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.trip-card-text .trip-date,
+.trip-card-text .trip-location {
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .trip-card-cardmode {
+    width: 45%;
+    height: 220px;
+  }
+
+  .trip-card-text .trip-title {
+    font-size: 16px;
+  }
+
+  .trip-card-text .trip-date,
+  .trip-card-text .trip-location {
+    font-size: 11px;
+  }
 }
