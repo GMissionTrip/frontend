@@ -96,25 +96,27 @@ export const MyArchive = () => {
 
       {isSidebarOpen && <HomeSidebar onClose={handleSidebar} />}
 
+      {/* <div className="archive-controls"> */}
       {/* 뷰 모드 선택 버튼 */}
       <div className="view-toggle">
-        <div
-          className={`toggle-btn ${viewMode === "list" ? "active" : ""}`}
+        <button
+          className={`toggle-option ${viewMode === "list" ? "active" : ""}`}
           onClick={() => setViewMode("list")}
         >
           리스트형
-        </div>
-        <div
-          className={`toggle-btn ${viewMode === "card" ? "active" : ""}`}
+        </button>
+        <button
+          className={`toggle-option ${viewMode === "card" ? "active" : ""}`}
           onClick={() => setViewMode("card")}
         >
           카드형
-        </div>
+        </button>
       </div>
 
       <div className="sort-button-wrapper">
         <SortDropdown sortOption={sortOption} setSortOption={setSortOption} />
       </div>
+      {/* </div> */}
 
       {viewMode === "list" && (
         <div className="trip-list">
