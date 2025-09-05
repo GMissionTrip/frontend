@@ -341,14 +341,10 @@
 .mySwiper .swiper-slide {
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 .mySwiper .swiper-slide:hover {
   transform: scale(1.03);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 .mySwiper .swiper-slide div {
   padding: 16px;
@@ -359,30 +355,12 @@
   justify-content: flex-end;
   border-radius: 18px;
 }
-.mySwiper .swiper-slide div div:first-child {
-  font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 4px;
-}
-.mySwiper .swiper-slide div div:nth-child(2),
-.mySwiper .swiper-slide div div:nth-child(3) {
-  font-size: 12px;
-  margin-top: 2px;
-}
 @media (max-width: 480px) {
   .mySwiper {
-    max-width: 90%;
-    height: 280px;
+    max-width: 80%;
   }
   .mySwiper .swiper-slide div {
-    padding: 12px;
-  }
-  .mySwiper .swiper-slide div div:first-child {
-    font-size: 16px;
-  }
-  .mySwiper .swiper-slide div div:nth-child(2),
-  .mySwiper .swiper-slide div div:nth-child(3) {
-    font-size: 11px;
+    padding: 6px;
   }
 }
 .archive-controls {
@@ -490,21 +468,4 @@
 .trip-card-text .trip-location {
   font-size: 12px;
   margin-top: 2px;
-}
-
-/* 반응형 */
-@media (max-width: 480px) {
-  .trip-card-cardmode {
-    width: 45%;
-    height: 220px;
-  }
-
-  .trip-card-text .trip-title {
-    font-size: 16px;
-  }
-
-  .trip-card-text .trip-date,
-  .trip-card-text .trip-location {
-    font-size: 11px;
-  }
 }

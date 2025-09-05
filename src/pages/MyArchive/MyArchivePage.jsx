@@ -138,15 +138,15 @@ export const MyArchive = () => {
         <Swiper effect={"cards"} grabCursor={true} modules={[EffectCards]} className="mySwiper">
           {sortedTrips.map((trip) => (
             <SwiperSlide key={trip.id}>
-              <div
-                className="card-slide"
-                style={{ background: trip.background }}
+              <TripCard
+                key={trip.id}
+                trip={trip}
+                isOpen={openDropdown === trip.id}
+                onToggle={() => toggleDropdown(trip.id)}
                 onClick={() => navigate(`/my-archive/details/${trip.id}`, { state: trip })}
-              >
-                <div className="card-title">{trip.title}</div>
-                <div className="card-date">{trip.date}</div>
-                <div className="card-location">{trip.location}</div>
-              </div>
+                onEditClick={handleEditClick}
+                viewMode="list"
+              />
             </SwiperSlide>
           ))}
         </Swiper>

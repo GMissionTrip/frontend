@@ -1,9 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaShareAlt } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import { TripCard } from "@/components/Archive/TripCard";
-import { TopBar } from "@/components/common/TopBar";
 import { ArchiveMissionCard } from "@/components/Archive/ArchiveMissionCard";
+import { FaArrowLeft, FaBars } from "react-icons/fa";
+import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
+import { HomeSidebar } from "@/components/common/HomeSidebar";
 import "@/pages/MyArchive/MyArchiveDetailsPage.css";
 
 export const MyArchiveDetails = () => {
@@ -21,6 +24,9 @@ export const MyArchiveDetails = () => {
 
   const location = useLocation();
   const trip = location.state;
+
+  const navigate = useNavigate();
+  const handleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
   const missions = [
     {
@@ -79,8 +85,6 @@ export const MyArchiveDetails = () => {
     },
   ];
 
-  const handleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-
   const handleSelectFiles = (e) => {
     const files = Array.from(e.target.files);
     if (!files.length) return;
@@ -133,11 +137,16 @@ export const MyArchiveDetails = () => {
 
   return (
     <>
-      <TopBar title="상세 정보" isSidebarOpen={isSidebarOpen} onToggleSidebar={handleSidebar} />
+      <LayoutTitleWithActions
+        title="상세 정보"
+        leftIcon={<FaArrowLeft />}
+        onLeftIconClick={() => navigate("/my-archive")}
+        icon={<FaBars />}
+        onIconClick={handleSidebar}
+      />
+      {isSidebarOpen && <HomeSidebar onClose={handleSidebar} />}{" "}
       <TripCard trip={trip} className="trip-card-details" hideMeta />
-
       <div ref={mapRef} style={{ width: "100%", height: "250px" }}></div>
-
       <div className="tab-menu">
         <button className={tab === "missions" ? "active" : ""} onClick={() => setTab("missions")}>
           미션
@@ -146,7 +155,6 @@ export const MyArchiveDetails = () => {
           사진
         </button>
       </div>
-
       {tab === "missions" &&
         missions.map((group) => (
           <div key={group.date} className="mission-day">
@@ -158,7 +166,6 @@ export const MyArchiveDetails = () => {
             ))}
           </div>
         ))}
-
       {tab === "photos" && (
         <>
           <button
@@ -235,13 +242,11 @@ export const MyArchiveDetails = () => {
           )}
         </>
       )}
-
       {modalPhoto && (
         <div className="photo-modal" onClick={() => setModalPhoto(null)}>
           <img src={modalPhoto} alt="확대 사진" />
         </div>
       )}
-
       <div className="share-menu">
         <div className="share-btn" ref={shareRef} onClick={() => setShareOpen(!shareOpen)}>
           <FaShareAlt />
