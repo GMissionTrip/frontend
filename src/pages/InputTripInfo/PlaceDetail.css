@@ -1,22 +1,9 @@
 .place-detail {
-  font-family: "Apple SD Gothic Neo", sans-serif;
   background: #f9f8f7;
   padding: 0 16px;
   color: #333;
 }
 
-/* Header */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-}
-.header h2 {
-  font-size: 18px;
-  font-weight: 600;
-}
 .back-btn {
   background: none;
   border: none;

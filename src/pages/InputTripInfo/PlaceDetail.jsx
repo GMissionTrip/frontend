@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
+import { HomeSidebar } from "@/components/common/HomeSidebar";
 import {
   FaClock,
   FaMoneyBill,
@@ -10,6 +13,8 @@ import {
   FaCar,
   FaUmbrellaBeach,
   FaStar,
+  FaArrowLeft,
+  FaBars,
 } from "react-icons/fa";
 import "./PlaceDetail.css";
 
@@ -59,129 +64,133 @@ export const PlaceDetail = () => {
       },
     ],
   };
+  const navigate = useNavigate();
+  const handleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
-  const [visibleReviews, setVisibleReviews] = useState(3); // 처음 3개만 표시
+  const [visibleReviews, setVisibleReviews] = useState(3);
   const [loading, setLoading] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleLoadMore = () => {
     setLoading(true);
     setTimeout(() => {
-      setVisibleReviews((prev) => prev + 2); // 2개씩 더 보여주기
+      setVisibleReviews((prev) => prev + 2);
       setLoading(false);
-    }, 1200); // 로딩 시뮬레이션 (1.2초)
+    }, 1200);
   };
 
   return (
-    <div className="place-detail">
-      {/* Header */}
-      <div className="header">
-        <button className="back-btn">←</button>
-        <h2>상세 정보</h2>
-        <div className="header-actions">
-          <button>♡</button>
-          <button>⤴</button>
+    <>
+      {/* 상단 헤더 */}
+      <LayoutTitleWithActions
+        title="관광지 정보"
+        leftIcon={<FaArrowLeft />}
+        onLeftIconClick={() => navigate("/select-place")}
+        icon={<FaBars />}
+        onIconClick={handleSidebar}
+      />
+      {isSidebarOpen && <HomeSidebar onClose={handleSidebar} />}{" "}
+      <div className="place-detail">
+        {/* 이미지 섹션 */}
+        <div className="image-section">
+          <div className="image-placeholder"></div>
+          <div className="thumbs">
+            <div className="thumb"></div>
+            <div className="thumb"></div>
+            <div className="thumb more">+5</div>
+          </div>
         </div>
-      </div>
 
-      {/* 이미지 섹션 */}
-      <div className="image-section">
-        <div className="image-placeholder"></div>
-        <div className="thumbs">
-          <div className="thumb"></div>
-          <div className="thumb"></div>
-          <div className="thumb more">+5</div>
+        {/* 기본 정보 */}
+        <div className="basic-info">
+          <span className="tag">#{place.category}</span>
+          <h3>{place.name}</h3>
+          <div className="rating">
+            <FaStar className="star" />
+            <span>{place.rating}</span>
+            <span className="review-count">({place.reviews})</span>
+          </div>
+          <p className="address">
+            <FaMapMarkerAlt /> {place.address}
+          </p>
         </div>
-      </div>
 
-      {/* 기본 정보 */}
-      <div className="basic-info">
-        <span className="tag">#{place.category}</span>
-        <h3>{place.name}</h3>
-        <div className="rating">
-          <FaStar className="star" />
-          <span>{place.rating}</span>
-          <span className="review-count">({place.reviews})</span>
+        {/* 운영 정보 */}
+        <div className="section">
+          <h4>운영 정보</h4>
+          <ul>
+            <li>
+              <FaClock /> {place.operating}
+            </li>
+            <li>
+              <FaMoneyBill /> {place.price}
+            </li>
+            <li>
+              <FaCreditCard /> {place.payment}
+            </li>
+            <li>
+              <FaPhone /> {place.contact}
+            </li>
+          </ul>
         </div>
-        <p className="address">
-          <FaMapMarkerAlt /> {place.address}
-        </p>
-      </div>
 
-      {/* 운영 정보 */}
-      <div className="section">
-        <h4>운영 정보</h4>
-        <ul>
-          <li>
-            <FaClock /> {place.operating}
-          </li>
-          <li>
-            <FaMoneyBill /> {place.price}
-          </li>
-          <li>
-            <FaCreditCard /> {place.payment}
-          </li>
-          <li>
-            <FaPhone /> {place.contact}
-          </li>
-        </ul>
-      </div>
-
-      {/* 소개 */}
-      <div className="section">
-        <h4>소개</h4>
-        <p>{place.description}</p>
-      </div>
-
-      {/* 편의시설 */}
-      <div className="section">
-        <h4>편의시설</h4>
-        <div className="facilities">
-          <span>
-            <FaWifi /> WiFi
-          </span>
-          <span>
-            <FaCar /> 주차 가능
-          </span>
-          <span>
-            <FaDog /> 반려동물 동반
-          </span>
-          <span>
-            <FaUmbrellaBeach /> 테라스
-          </span>
+        {/* 소개 */}
+        <div className="section">
+          <h4>소개</h4>
+          <p>{place.description}</p>
         </div>
-      </div>
 
-      {/* 리뷰 */}
-      <div className="section">
-        <h4>리뷰</h4>
-        {place.reviewsList.slice(0, visibleReviews).map((r) => (
-          <div key={r.reviewId} className="review">
-            <div className="review-header">
-              <span className="avatar">{r.user[0]}</span>
-              <div>
-                <strong>{r.user}</strong>
-                <span className="date">{r.date}</span>
+        {/* 편의시설 */}
+        <div className="section">
+          <h4>편의시설</h4>
+          <div className="facilities">
+            <span>
+              <FaWifi /> WiFi
+            </span>
+            <span>
+              <FaCar /> 주차 가능
+            </span>
+            <span>
+              <FaDog /> 반려동물 동반
+            </span>
+            <span>
+              <FaUmbrellaBeach /> 테라스
+            </span>
+          </div>
+        </div>
+
+        {/* 리뷰 */}
+        <div className="section">
+          <h4>리뷰</h4>
+          {place.reviewsList.slice(0, visibleReviews).map((r) => (
+            <div key={r.reviewId} className="review">
+              <div className="review-header">
+                <span className="avatar">{r.user[0]}</span>
+                <div>
+                  <strong>{r.user}</strong>
+                  <span className="date">{r.date}</span>
+                </div>
+                <span className="rating">
+                  {"★".repeat(r.rating)}
+                  {"☆".repeat(5 - r.rating)}
+                </span>
               </div>
-              <span className="rating">
-                {"★".repeat(r.rating)}
-                {"☆".repeat(5 - r.rating)}
-              </span>
+              <p>{r.content}</p>
             </div>
-            <p>{r.content}</p>
-          </div>
-        ))}
+          ))}
 
-        {/* 더보기 버튼 */}
-        {visibleReviews < place.reviewsList.length && (
-          <div className="load-more">
-            {loading ? (
-              <span className="loading"> 로딩중..</span>
-            ) : (
-              <button onClick={handleLoadMore}>리뷰 더보기</button>
-            )}
-          </div>
-        )}
+          {/* 더보기 버튼 */}
+          {visibleReviews < place.reviewsList.length && (
+            <div className="load-more">
+              {loading ? (
+                <span className="loading"> 로딩중..</span>
+              ) : (
+                <button onClick={handleLoadMore}>리뷰 더보기</button>
+              )}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
