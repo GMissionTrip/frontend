@@ -1,89 +1,342 @@
-.section {
-  margin: 24px;
+:root {
+  --navy: #0b3b73; /* 헤더 네이비 */
+  --navy-deep: #032b5c;
+  --card: #ffffff;
+  --text: #0b2340;
+  --muted: #818a96;
+  --brown: #7a6252; /* 지난 여행 서브(브라운 느낌) */
+  --chip: #0b2340;
+  --accent: #003a7a;
+  --badge-green: #67c090;
 }
 
-h2 {
-  font-size: 24px;
-  margin-bottom: 16px;
+* {
+  box-sizing: border-box;
+  font-family: "Pretendard", sans-serif;
 }
 
-.scroll-container {
+body {
+  font-family: "Pretendard", sans-serif;
+}
+
+.mhp-root {
+  min-height: 100dvh;
+}
+
+/* ===== 헤더 ===== */
+.top-header {
+  position: relative;
+  padding: 50px 28px 48px;
+  color: #fff;
   display: flex;
-  overflow-x: auto;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #0b3b73 0%, #063a79 100%);
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  overflow: visible;
+}
+
+.top-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  height: 80px; /* 곡면 깊이 */
+  background: inherit; /* 같은 네이비 그라데이션 */
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  z-index: 0;
+}
+
+/* 좌측: 별 아이콘 박스 + 텍스트 */
+.header-left {
+  display: flex;
+  align-items: center;
   gap: 12px;
-  padding-bottom: 8px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  z-index: 1;
 }
-
-.scroll-container::-webkit-scrollbar {
-  height: 6px;
+.star-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25); /* 스샷처럼 얇은 테두리 */
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
-.scroll-container::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
+.star-icon {
+  font-size: 14px;
+  color: #fff;
 }
-
-.small-card {
-  min-width: 120px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.small-card img {
-  width: 100%;
-  height: 80px;
-  object-fit: cover;
-}
-
-.footer-buttons {
+.title-box {
   display: flex;
   flex-direction: column;
-  margin-top: 32px;
+  line-height: 1.15;
 }
-
-.explore-btn {
-  padding: 12px;
-  background-color: #eee;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.plus-btn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
-  background-color: #01306f;
-  color: white;
-  font-size: 28px;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 1000;
-}
-
-.no-travel {
-  margin: 24px;
-  padding: 40px 20px;
-  text-align: center;
-  font-size: 16px;
+.title-box div {
+  font-size: 18px;
   font-weight: 500;
-  color: #555;
-  background-color: #f9f9f9;
-  border: 2px dashed #ccc;
-  border-radius: 12px;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 4px;
+}
+.title-box span {
+  font-size: 11px;
+  opacity: 0.9;
 }
 
-/* 안내 메시지 강조 */
-.no-travel::before {
-  content: "🗺️ ";
+.menu-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  color: #fff;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(2px);
+}
+
+/* 콘텐츠는 헤더 곡면 아래로 자연스럽게 내려오게 */
+.mhp-content {
+  margin-top: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== 콘텐츠 공통 ===== */
+.mhp-content {
+  margin-top: -48px;
+}
+.mhp-section {
+  padding: 30px;
+  z-index: 100;
+  position: relative;
+}
+.mhp-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+.mhp-row.between {
+  justify-content: space-between;
+}
+
+.mhp-row div {
+  margin: 0;
+  color: white;
+}
+
+.mhp-row h2 {
+  margin: 0;
+}
+.mhp-count {
+  background: var(--chip);
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* ===== 현재 여행 카드 ===== */
+.mhp-nowcard {
+  margin-top: 12px;
+  background: var(--card);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.mhp-nowimg {
+  position: relative;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+.mhp-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--badge-green);
+  font-weight: 600;
+  color: white;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+}
+.mhp-days {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+.mhp-textwrap {
+  position: absolute;
+  left: 16px;
+  bottom: 74px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+.mhp-textwrap h3 {
+  margin: 0 0 6px 0;
   font-size: 20px;
-  margin-right: 6px;
+  font-weight: 500;
+}
+.mhp-textwrap p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  opacity: 0.95;
+}
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(to bottom, rgba(18, 18, 18, 0.0001) 0%, #121212 100%);
+}
+
+.mhp-progress {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 18px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+}
+.mhp-progress-bar {
+  height: 100%;
+  background: #fff;
+  border-radius: 999px;
+}
+.mhp-progress-num {
+  position: absolute;
+  right: 0;
+  bottom: 14px;
+  transform: translateY(100%);
+  color: var(--text);
+  font-size: 15px;
+}
+.mhp-nowdate {
+  padding: 14px 16px 18px 16px;
+  color: var(--text);
+  background: var(--card);
+}
+
+/* ===== 지난 여행 리스트 ===== */
+.mhp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+.mhp-item {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e1e6ed;
+  background: var(--card);
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  cursor: pointer;
+}
+.mhp-item-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mhp-item-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+.mhp-item-sub {
+  font-size: 16px;
+  color: var(--brown);
+}
+.mhp-item-meta {
+  font-size: 14px;
+  color: #9aa3ad;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.mhp-item-meta .dot {
+  opacity: 0.6;
+}
+.mhp-chevron {
+  color: #bcc6d0;
+}
+
+/* ===== 여행 영감 찾기 ===== */
+.mhp-inspire {
+  margin: 16px;
+  background: var(--card);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid #e1e6ed;
+}
+.mhp-inspire-left h3 {
+  margin: 0 0 8px 0;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 600;
+}
+.mhp-inspire-left p {
+  margin: 0 0 12px 0;
+  color: #7b8592;
+}
+.mhp-inspire-link {
+  appearance: none;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mhp-inspire-icon {
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: #eaf0ff;
+  color: var(--accent);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ===== 플로팅 FAB ===== */
+.mhp-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 24px;
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 30px;
+  color: #fff;
+  background: var(--chip);
+  z-index: 1000;
 }
