@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
 export const CurrentTrip = () => {
-  const [tripStage, setTripStage] = useState("after");
+  const [tripStage, setTripStage] = useState("inprogress"); // before, inprogress, after
   const navigate = useNavigate();
 
   return (
