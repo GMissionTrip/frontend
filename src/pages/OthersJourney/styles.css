@@ -1,71 +1,154 @@
-.others-journey-filter-btn {
+/* 탭 스타일 */
+.tabs {
   display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  margin-bottom: 24px;
-  margin: 0 8px;
+  border-bottom: 1px solid #eee;
+  margin: 8px 0;
 }
 
-.others-journey-filter-btn button {
+.tab {
+  flex: 1;
+  padding: 12px 0;
   background: none;
   border: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #888;
   cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
 }
 
-.others-journey-filter-icon {
-  font-size: 20px;
+.tab.active {
+  color: #000;
+}
+
+/* 피드 리스트 */
+.feed-list {
+  padding: 12px;
+}
+
+/* 피드 카드 */
+.feed-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  padding: 14px;
+}
+
+/* 카드 상단 */
+.feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-circle {
+  width: 36px;
+  height: 36px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.feed-info {
+  flex: 1;
+}
+
+.username {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.meta {
+  display: block;
+  font-size: 12px;
+  color: #777;
+}
+
+.more-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #777;
+}
+
+/* 본문 */
+.feed-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 8px 0 4px;
+}
+
+.feed-content {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* 태그 */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.tag {
+  background: #f2f2f2;
+  border-radius: 16px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #333;
+}
+
+/* 이미지 */
+.feed-image {
+  position: relative;
+  margin: 10px 0;
+  height: 200px;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.feed-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #ddd;
+}
+
+.bookmark-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  font-size: 16px;
+}
+
+/* 하단 액션 */
+.feed-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
   color: #555;
 }
 
-.others-journey-filter-btn span {
-  font-size: 16px;
-  color: #333;
-  margin-left: 4px;
-}
-
-.others-journey-filter-dropdown {
-  position: absolute;
-  top: 36px;
-  right: 0;
-  left: auto;
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  z-index: 10;
-  min-width: 100px;
-  padding: 4px 0;
-}
-
-.others-journey-filter-dropdown div {
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 15px;
-  color: #333;
-  transition: background 0.2s;
-}
-
-.others-journey-filter-dropdown div:hover {
-  background: #f5f5f5;
-}
-
-.others-journey-home-btn {
-  margin-top: 32px;
-  padding: 10px 24px;
-  background: #1976d2;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.others-journey-home-btn:hover {
-  background: #1565c0;
+.feed-actions .left {
+  display: flex;
+  gap: 16px;
 }

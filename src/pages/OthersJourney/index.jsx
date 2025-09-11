@@ -1,85 +1,116 @@
-import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaRegUser } from "react-icons/fa";
-import { FaFilter } from "react-icons/fa";
-import OtherTravelCard from "@/components/common/OtherTravelCard";
+import {
+  FaArrowLeft,
+  FaRegUser,
+  FaHeart,
+  FaRegCommentDots,
+  FaShareAlt,
+  FaBookmark,
+} from "react-icons/fa";
+import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
 import "./styles.css";
 
 export const OthersJourneyPage = () => {
   const navigate = useNavigate();
-  const dummyData = [
+  const [activeTab, setActiveTab] = useState("피드");
+
+  const dummyPosts = [
     {
       id: 1,
-      title: "여행 이야기",
-      view: 20,
-      like: 40,
-      imageUrl:
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-      subtitle: "여행을 떠나요",
+      user: "Liam",
+      location: "제주도 성산일출봉",
+      timeAgo: "2시간 전",
+      title: "제주도 3박 4일 완벽 가이드",
+      tags: ["#제주도", "#성산일출봉", "#일출"],
+      likes: 127,
+      comments: 23,
+      imageUrl: "",
     },
     {
       id: 2,
-      title: "자연과 함께",
-      view: 15,
-      like: 30,
-      imageUrl:
-        "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=400&q=80",
-      subtitle: "자연을 만끽하는 여행",
-    },
-    {
-      id: 3,
-      title: "도시 탐방",
-      view: 25,
-      like: 50,
-      imageUrl:
-        "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=400&q=80",
-      subtitle: "도시의 매력을 느껴보세요",
+      user: "Liam",
+      location: "제주도 성산일출봉",
+      timeAgo: "2시간 전",
+      title: "제주도 3박 4일 완벽 가이드",
+      tags: ["#제주도", "#성산일출봉", "#일출"],
+      likes: 127,
+      comments: 23,
+      imageUrl: "",
     },
   ];
 
-  const [showFilter, setShowFilter] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState("최신순");
-
-  const filterOptions = ["최신순", "조회순", "좋아요순"];
-
-  const handleFilterToggle = () => {
-    setShowFilter((prev) => !prev);
-  };
-
-  const handleFilterSelect = (option) => {
-    setSelectedFilter(option);
-    setShowFilter(false);
-  };
-
   return (
     <LayoutTitleWithActions
-      title={"다른 사람의 이야기"}
+      title="둘러보기"
       leftIcon={<FaArrowLeft />}
-      onLeftIconClick={() => {
-        navigate("/main");
-      }}
+      onLeftIconClick={() => navigate("/main")}
       icon={<FaRegUser />}
       onIconClick={() => navigate("/login")}
     >
-      <div className="others-journey-filter-btn">
-        <button onClick={handleFilterToggle}>
-          <FaFilter className="others-journey-filter-icon" />
-        </button>
-        <span>{selectedFilter}</span>
-        {showFilter && (
-          <div className="others-journey-filter-dropdown">
-            {filterOptions.map((option) => (
-              <div key={option} onClick={() => handleFilterSelect(option)}>
-                {option}
-              </div>
-            ))}
-          </div>
-        )}
+      {/* 탭 */}
+      <div className="tabs">
+        {["피드", "인기"].map((tab) => (
+          <button
+            key={tab}
+            className={`tab ${activeTab === tab ? "active" : ""}`}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tab}
+          </button>
+        ))}
       </div>
-      <div>
-        {dummyData.map((item) => (
-          <OtherTravelCard key={item.id} data={item} />
+
+      {/* 게시글 카드 */}
+      <div className="feed-list">
+        {dummyPosts.map((post) => (
+          <div key={post.id} className="feed-card">
+            <div className="feed-header">
+              <div className="profile-circle">{post.user.charAt(0)}</div>
+              <div className="feed-info">
+                <span className="username">{post.user} ★127</span>
+                <span className="meta">
+                  {post.location} · {post.timeAgo}
+                </span>
+              </div>
+              <button className="more-btn">⋮</button>
+            </div>
+
+            <h3 className="feed-title">{post.title}</h3>
+
+            <div className="tags">
+              {post.tags.map((tag, i) => (
+                <span key={i} className="tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="feed-image">
+              {post.imageUrl ? (
+                <img src={post.imageUrl} alt="여행사진" />
+              ) : (
+                <div className="image-placeholder" />
+              )}
+              <button className="bookmark-btn">
+                <FaBookmark />
+              </button>
+            </div>
+
+            <div className="feed-actions">
+              <div className="left">
+                <span>
+                  <FaHeart /> {post.likes}
+                </span>
+                <span>
+                  <FaRegCommentDots /> {post.comments}
+                </span>
+              </div>
+              <div>
+                <FaShareAlt />
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </LayoutTitleWithActions>
