@@ -82,7 +82,7 @@ export const MainHomePage = () => {
           <div className="mhp-row between">
             <h2>지난 여행들</h2>
             <button className="mhp-link" onClick={() => navigate("/my-archive")}>
-              모두보기
+              모두 보기 &gt;
             </button>
           </div>
 

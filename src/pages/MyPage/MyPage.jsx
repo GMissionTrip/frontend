@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { TopBar } from "@/components/common/TopBar";
 import "./MyPage.css";
 import "@/components/common/TopBar.css";
 import useUser from "@/hooks/useUser.mjs";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft, FaBars } from "react-icons/fa";
 import { LayoutTitleWithActions } from "@/components/common/LayoutTitleWithActions";
 
 export const MyPage = () => {
@@ -14,8 +14,10 @@ export const MyPage = () => {
   const badges = Array(8).fill(null);
   const xp = 2400;
   const maxXp = 3000;
+  const navigate = useNavigate();
 
-  if (!user) return <Navigate to="/login" replace />;
+  // 임시 주석 처리
+  // if (!user) return <Navigate to="/login" replace />;
 
   const handleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -29,12 +31,11 @@ export const MyPage = () => {
       <LayoutTitleWithActions
         title="마이페이지"
         leftIcon={<FaArrowLeft />}
-        onLeftIconClick={() => navigate("/main")}
+        onLeftIconClick={() => navigate(-1)}
         icon={<FaBars />}
         onIconClick={handleSidebar}
       />
-
-      {/* 프로필 카드 */}
+      {isSidebarOpen && <HomeSidebar onClose={handleSidebar} />} {/* 프로필 카드 */}
       <div className="profile-card">
         <img className="profile-avatar" src="https://picsum.photos/80/80" alt="avatar" />
         <div className="profile-info">
@@ -48,7 +49,6 @@ export const MyPage = () => {
           </p>
         </div>
       </div>
-
       {/* 버튼 그룹 */}
       <div className="mypage-details">
         <div className="mypage-buttons">

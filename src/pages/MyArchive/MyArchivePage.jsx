@@ -89,7 +89,7 @@ export const MyArchive = () => {
       <LayoutTitleWithActions
         title="내 아카이브"
         leftIcon={<FaArrowLeft />}
-        onLeftIconClick={() => navigate("/main")}
+        onLeftIconClick={() => navigate(-1)}
         icon={<FaBars />}
         onIconClick={handleSidebar}
       />

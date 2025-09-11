@@ -134,12 +134,12 @@ body {
   margin: 0;
 }
 .mhp-count {
-  background: var(--chip);
-  color: #fff;
+  background: white;
+  color: #0b2340;
   border-radius: 999px;
   padding: 2px 10px;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 /* ===== 현재 여행 카드 ===== */
@@ -175,33 +175,23 @@ body {
   color: #fff;
   font-weight: 800;
   font-size: 14px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 .mhp-textwrap {
   position: absolute;
   left: 16px;
-  bottom: 74px;
+  bottom: 60px;
   color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 .mhp-textwrap h3 {
   margin: 0 0 6px 0;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
 }
 .mhp-textwrap p {
   margin: 0;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   opacity: 0.95;
-}
-.gradient-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 50%;
-  background: linear-gradient(to bottom, rgba(18, 18, 18, 0.0001) 0%, #121212 100%);
 }
 
 .mhp-progress {
@@ -213,25 +203,35 @@ body {
   background: rgba(255, 255, 255, 0.55);
   border-radius: 999px;
 }
+
 .mhp-progress-bar {
   height: 100%;
   background: #fff;
   border-radius: 999px;
+  width: 70%;
 }
+
 .mhp-progress-num {
   position: absolute;
   right: 0;
-  bottom: 14px;
-  transform: translateY(100%);
-  color: var(--text);
+  top: 50%;
+  transform: translate(50%, -50%);
+  color: #fff;
   font-size: 15px;
+  white-space: nowrap;
 }
 .mhp-nowdate {
   padding: 14px 16px 18px 16px;
   color: var(--text);
   background: var(--card);
 }
-
+.mhp-link {
+  appearance: none;
+  border: none;
+  background: none;
+  color: #7b8592;
+  cursor: pointer;
+}
 /* ===== 지난 여행 리스트 ===== */
 .mhp-list {
   display: flex;
@@ -280,10 +280,9 @@ body {
 .mhp-chevron {
   color: #bcc6d0;
 }
-
 /* ===== 여행 영감 찾기 ===== */
 .mhp-inspire {
-  margin: 16px;
+  margin: 30px;
   background: var(--card);
   border-radius: 18px;
   display: flex;

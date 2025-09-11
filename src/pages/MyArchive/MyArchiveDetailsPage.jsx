@@ -140,7 +140,7 @@ export const MyArchiveDetails = () => {
       <LayoutTitleWithActions
         title="상세 정보"
         leftIcon={<FaArrowLeft />}
-        onLeftIconClick={() => navigate("/my-archive")}
+        onLeftIconClick={() => navigate(-1)}
         icon={<FaBars />}
         onIconClick={handleSidebar}
       />
