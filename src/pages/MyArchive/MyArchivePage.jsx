@@ -12,10 +12,9 @@ import "@/pages/MyArchive/MyArchivePage.css";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCards } from "swiper";
+import { EffectCards } from "swiper/modules";
 import SwiperCore from "swiper";
 
-SwiperCore.use([EffectCards]);
 import "swiper/css";
 import "swiper/css/effect-cards";
 
@@ -72,6 +71,8 @@ export const MyArchive = () => {
     setTrips((prev) => prev.map((t) => (t.id === updatedTrip.id ? updatedTrip : t)));
   };
   const toggleDropdown = (id) => setOpenDropdown(openDropdown === id ? null : id);
+
+  SwiperCore.use([EffectCards]);
 
   const sortedTrips = [...trips].sort((a, b) => {
     if (sortOption === "latest") {
