@@ -1,0 +1,257 @@
+.input-trip-info2 {
+  min-height: 100vh;
+  background-color: var(--color-gray-50, #FAFAFA);
+  padding: var(--spacing-4, 1rem);
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--color-white, #FFFFFF);
+  border-radius: var(--radius-2xl, 20px);
+  padding: var(--spacing-8, 2rem);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.form-container h2 {
+  font-size: var(--font-size-2xl, 1.5rem);
+  font-weight: 600;
+  color: var(--color-gray-900, #1A1A1A);
+  margin-bottom: var(--spacing-2, 0.5rem);
+}
+
+.form-subtitle {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-gray-600, #666666);
+  margin-bottom: var(--spacing-6, 1.5rem);
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-base, 1rem);
+  font-weight: 500;
+  color: var(--color-gray-700, #333333);
+  margin-bottom: var(--spacing-3, 0.75rem);
+}
+
+.label-icon {
+  color: var(--color-primary-500, #FF6B6B);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-6, 1.5rem);
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-gray-200, #E5E5E5);
+  margin: var(--spacing-8, 2rem) 0;
+}
+
+/* 옵션 버튼 그리드 */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.option-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  background: var(--color-gray-50, #FAFAFA);
+  border: 2px solid var(--color-gray-200, #E5E5E5);
+  border-radius: var(--radius-lg, 12px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-button:hover {
+  background: var(--color-gray-100, #F0F0F0);
+}
+
+.option-button.selected {
+  background: var(--color-primary-50, #FFF0F0);
+  border-color: var(--color-primary-500, #FF6B6B);
+}
+
+.option-icon {
+  font-size: 1.75rem;
+}
+
+.option-label {
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 500;
+  color: var(--color-gray-700, #333333);
+}
+
+/* 여행 테마 그리드 */
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.theme-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  background: var(--color-gray-50, #FAFAFA);
+  border: 2px solid var(--color-gray-200, #E5E5E5);
+  border-radius: var(--radius-lg, 12px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-button:hover:not(:disabled) {
+  background: var(--color-gray-100, #F0F0F0);
+}
+
+.theme-button.selected {
+  background: var(--color-primary-50, #FFF0F0);
+  border-color: var(--color-primary-500, #FF6B6B);
+}
+
+.theme-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.theme-icon {
+  font-size: 1.5rem;
+}
+
+.theme-label {
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 500;
+  color: var(--color-gray-700, #333333);
+  text-align: center;
+}
+
+.selected-themes-count {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-primary-500, #FF6B6B);
+  text-align: right;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* 날짜 선택기 */
+.date-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.date-input-wrapper {
+  flex: 1;
+}
+
+.date-separator {
+  color: var(--color-gray-400, #CCCCCC);
+  font-weight: 500;
+}
+
+/* 시간 선택기 */
+.time-selector {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.time-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-label {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-gray-600, #666666);
+  font-weight: 500;
+}
+
+.time-select {
+  padding: 0.625rem 0.75rem;
+  background: var(--color-gray-50, #FAFAFA);
+  border: 1px solid var(--color-gray-200, #E5E5E5);
+  border-radius: var(--radius-lg, 12px);
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-gray-900, #1A1A1A);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-select:hover {
+  border-color: var(--color-gray-300, #CCCCCC);
+}
+
+.time-select:focus {
+  outline: none;
+  border-color: var(--color-primary-500, #FF6B6B);
+  background: var(--color-white, #FFFFFF);
+}
+
+.time-period {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--color-gray-500, #999999);
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  background: var(--color-gray-100, #F0F0F0);
+  border-radius: var(--radius-md, 8px);
+}
+
+/* 버튼 그룹 */
+.button-group {
+  display: flex;
+  gap: var(--spacing-4, 1rem);
+  justify-content: center;
+  margin-top: var(--spacing-8, 2rem);
+}
+
+.complete-button {
+  width: 100%;
+  max-width: 100%;
+  font-weight: 600;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  .form-container {
+    padding: var(--spacing-6, 1.5rem);
+  }
+
+  .option-grid {
+    gap: 0.5rem;
+  }
+
+  .option-button {
+    padding: 0.75rem 0.25rem;
+  }
+
+  .option-icon {
+    font-size: 1.5rem;
+  }
+
+  .option-label {
+    font-size: var(--font-size-xs, 0.75rem);
+  }
+
+  .theme-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .theme-button {
+    padding: 0.75rem 0.25rem;
+  }
+
+  .theme-icon {
+    font-size: 1.25rem;
+  }
+}

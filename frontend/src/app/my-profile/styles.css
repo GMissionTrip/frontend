@@ -1,0 +1,307 @@
+.my-profile-page {
+  padding: 1.5rem;
+  padding-bottom: 6rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 프로필 이미지 섹션 */
+.profile-image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 16px;
+}
+
+.profile-image-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image-edit-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  transition: all 0.2s ease;
+  color: white;
+  font-size: 1rem;
+}
+
+.image-edit-button:hover {
+  background: var(--color-primary-dark);
+  transform: scale(1.1);
+}
+
+.image-input {
+  display: none;
+}
+
+.image-hint {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* 프로필 폼 */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.form-input,
+.form-textarea {
+  padding: 0.875rem 1rem;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+.form-hint {
+  font-size: 0.8125rem;
+  color: var(--color-text-tertiary);
+  text-align: right;
+}
+
+/* 계정 정보 */
+.account-info {
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  margin-top: 1rem;
+}
+
+.account-info-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+}
+
+.info-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* 저장 버튼 */
+.form-actions {
+  margin-top: 1rem;
+}
+
+.save-button {
+  width: 100%;
+  padding: 1rem;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.save-button:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.save-button:disabled {
+  background: var(--color-background-secondary);
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+}
+
+/* 계정 관리 */
+.account-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.account-action-button {
+  padding: 0.875rem;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.account-action-button:hover {
+  background: var(--color-background-secondary);
+  border-color: var(--color-text-secondary);
+}
+
+.account-action-button.danger {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.account-action-button.danger:hover {
+  background: rgba(239, 68, 68, 0.05);
+  border-color: #ef4444;
+}
+
+/* 모달 */
+.password-change-modal,
+.delete-account-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.warning-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+}
+
+.warning-icon {
+  font-size: 2rem;
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.warning-text {
+  font-size: 0.9375rem;
+  color: #ef4444;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.modal-actions button {
+  flex: 1;
+}
+
+/* 반응형 */
+@media (max-width: 640px) {
+  .my-profile-page {
+    padding: 1rem;
+  }
+
+  .profile-image-section {
+    padding: 1.5rem 0;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .image-edit-button {
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 0.75rem;
+  }
+
+  .account-info {
+    padding: 1.25rem;
+  }
+
+  .save-button {
+    padding: 0.875rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+}
+

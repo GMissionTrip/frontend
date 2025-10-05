@@ -1,0 +1,301 @@
+.current-trip-page {
+  min-height: 100vh;
+  background: #F5F7FA;
+  padding-bottom: 2rem;
+}
+
+/* 여행 헤더 */
+.trip-header {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.trip-cover {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.cover-image {
+  object-fit: cover;
+}
+
+.trip-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 2rem 1.5rem;
+  color: white;
+}
+
+.trip-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.trip-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.trip-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.trip-location,
+.trip-dates {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 탭 */
+.trip-tabs {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tab-btn:hover {
+  background: #F1F5F9;
+}
+
+.tab-btn.active {
+  color: #1E40AF;
+  background: #EFF6FF;
+  font-weight: 600;
+}
+
+/* 가이드 콘텐츠 */
+.trip-guide {
+  padding: 0 1.5rem;
+}
+
+/* 진행률 섹션 */
+.trip-progress-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.progress-header h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.progress-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3B82F6;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  background: #E2E8F0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%);
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.progress-info {
+  color: #64748B;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* 미션 섹션 */
+.missions-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.missions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mission-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.mission-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.mission-card.completed {
+  opacity: 0.7;
+  background: #F8FAFC;
+}
+
+.mission-number {
+  min-width: 40px;
+  height: 40px;
+  background: #EFF6FF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #1E40AF;
+  font-size: 1.1rem;
+}
+
+.mission-card.completed .mission-number {
+  background: #D1FAE5;
+  color: #059669;
+}
+
+.check-icon {
+  color: #10B981;
+  font-size: 1.5rem;
+}
+
+.mission-icon {
+  font-size: 2rem;
+}
+
+.mission-info {
+  flex: 1;
+}
+
+.mission-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.mission-location {
+  font-size: 0.9rem;
+  color: #64748B;
+}
+
+.mission-points {
+  min-width: 60px;
+  text-align: right;
+}
+
+.points-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3B82F6;
+}
+
+/* 액션 섹션 */
+.actions-section {
+  margin-top: 2rem;
+}
+
+.route-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+.route-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(30, 64, 175, 0.3);
+}
+
+/* 지도 */
+.trip-map {
+  padding: 2rem 1.5rem;
+}
+
+.map-placeholder {
+  background: white;
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #64748B;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.map-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.map-placeholder p {
+  font-size: 1.1rem;
+}

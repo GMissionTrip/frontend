@@ -1,0 +1,148 @@
+.skeleton {
+  background: var(--color-gray-200);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  position: relative;
+}
+
+.skeleton-rectangular {
+  border-radius: var(--radius-base);
+}
+
+.skeleton-circular {
+  border-radius: var(--radius-full);
+}
+
+.skeleton-text {
+  border-radius: var(--radius-sm);
+}
+
+/* Animations */
+.skeleton-pulse {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-wave {
+  animation: skeleton-wave 1.6s linear infinite;
+}
+
+.skeleton-wave::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: skeleton-wave-shimmer 1.6s linear infinite;
+}
+
+.skeleton-none {
+  animation: none;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes skeleton-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes skeleton-wave-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Predefined skeleton components */
+.skeleton-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.skeleton-text-line {
+  margin-bottom: var(--spacing-1);
+}
+
+.skeleton-text-line:last-child {
+  width: 75%;
+}
+
+.skeleton-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-base);
+  border: 1px solid var(--color-gray-200);
+}
+
+.skeleton-card-image {
+  width: 100%;
+  border-radius: 0;
+}
+
+.skeleton-card-content {
+  padding: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.skeleton-card-title {
+  margin-bottom: var(--spacing-1);
+}
+
+.skeleton-card-subtitle {
+  margin-bottom: var(--spacing-2);
+}
+
+.skeleton-card-meta {
+  margin-top: var(--spacing-1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skeleton-card-content {
+    padding: var(--spacing-3);
+  }
+  
+  .skeleton-text-container {
+    gap: var(--spacing-1);
+  }
+}

@@ -1,0 +1,43 @@
+.notification-page {
+  min-height: 100vh;
+  background-color: var(--color-gray-50);
+}
+
+.notification-content {
+  padding: var(--spacing-4);
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.notification-header h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--color-gray-900);
+}
+
+.mark-all-read {
+  background: none;
+  border: none;
+  color: var(--color-primary-500);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+}
+
+.mark-all-read:hover {
+  background-color: var(--color-primary-50);
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}

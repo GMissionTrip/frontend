@@ -1,0 +1,309 @@
+.points-page {
+  padding: 1.5rem;
+  padding-bottom: 6rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* 포인트 요약 */
+.points-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.summary-card:last-child {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  box-shadow: 0 4px 12px rgba(245, 87, 108, 0.2);
+}
+
+.summary-icon {
+  font-size: 2rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.summary-icon.use {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: white;
+}
+
+.summary-label {
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.summary-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.summary-value.use {
+  color: white;
+}
+
+/* 탭 필터 */
+.points-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.25rem;
+  background: var(--color-background-secondary);
+  border-radius: 12px;
+}
+
+.points-tab {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.points-tab.active {
+  background: white;
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.points-tab:hover:not(.active) {
+  color: var(--color-text-primary);
+}
+
+/* 포인트 리스트 */
+.points-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.point-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.point-item:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.point-item.selected {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.point-item-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.point-icon-earn,
+.point-icon-use,
+.point-icon-default {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.point-icon-earn {
+  color: #10b981;
+}
+
+.point-icon-use {
+  color: #ef4444;
+}
+
+.point-icon-default {
+  color: var(--color-primary);
+}
+
+.point-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.point-item-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.point-item-date {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+.point-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.point-item-amount {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.point-item-amount.earn {
+  color: #10b981;
+}
+
+.point-item-amount.use {
+  color: #ef4444;
+}
+
+.point-item-source {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+  border-radius: 6px;
+}
+
+/* 빈 상태 */
+.empty-points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  color: var(--color-text-tertiary);
+  margin-bottom: 1rem;
+}
+
+.empty-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.empty-subtext {
+  font-size: 0.9375rem;
+  color: var(--color-text-tertiary);
+}
+
+/* 포인트 안내 */
+.points-info {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.info-icon {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.info-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.info-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* 반응형 */
+@media (max-width: 640px) {
+  .points-page {
+    padding: 1rem;
+  }
+
+  .points-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card {
+    padding: 1.25rem;
+  }
+
+  .summary-value {
+    font-size: 1.25rem;
+  }
+
+  .point-item {
+    padding: 1rem;
+  }
+
+  .point-item-left {
+    gap: 0.75rem;
+  }
+
+  .point-icon-earn,
+  .point-icon-use,
+  .point-icon-default {
+    font-size: 1.25rem;
+  }
+}
+
