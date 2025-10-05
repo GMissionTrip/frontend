@@ -1,0 +1,130 @@
+.bottom-sheet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-white, #FFFFFF);
+  border-radius: var(--radius-2xl, 20px) var(--radius-2xl, 20px) 0 0;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.bottom-sheet.dragging {
+  user-select: none;
+}
+
+/* 드래그 핸들 */
+.bottom-sheet-handle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3, 0.75rem) 0;
+  cursor: grab;
+  touch-action: none;
+}
+
+.bottom-sheet-handle:active {
+  cursor: grabbing;
+}
+
+.handle-bar {
+  width: 40px;
+  height: 4px;
+  background: var(--color-gray-300, #CCCCCC);
+  border-radius: var(--radius-full, 9999px);
+  margin-bottom: var(--spacing-2, 0.5rem);
+}
+
+.handle-icon {
+  color: var(--color-gray-400, #999999);
+  font-size: var(--font-size-lg, 1.125rem);
+}
+
+/* 헤더 */
+.bottom-sheet-header {
+  padding: 0 var(--spacing-6, 1.5rem) var(--spacing-4, 1rem);
+  border-bottom: 1px solid var(--color-gray-200, #E5E5E5);
+}
+
+.bottom-sheet-title {
+  font-size: var(--font-size-xl, 1.25rem);
+  font-weight: 600;
+  color: var(--color-gray-900, #1A1A1A);
+}
+
+/* 콘텐츠 */
+.bottom-sheet-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-4, 1rem) var(--spacing-6, 1.5rem);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 스크롤바 스타일 */
+.bottom-sheet-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bottom-sheet-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bottom-sheet-content::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300, #CCCCCC);
+  border-radius: var(--radius-full, 9999px);
+}
+
+.bottom-sheet-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400, #999999);
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+  .bottom-sheet {
+    max-width: 100%;
+  }
+}
+
+/* 데스크톱 최적화 */
+@media (min-width: 769px) {
+  .bottom-sheet {
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 600px;
+    border-radius: var(--radius-2xl, 20px);
+  }
+}
+
