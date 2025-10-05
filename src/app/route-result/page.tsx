@@ -78,7 +78,6 @@ export default function RouteResultPage() {
     <LayoutTitleWithActions
       title="경로 최적화 완료"
       showBack
-      onBack={handleBack}
     >
       <div className="route-result-page">
         {/* 지도 영역 */}

@@ -24,6 +24,11 @@ export interface KakaoAPI {
       success: (authObj: { access_token: string }) => void;
       fail: (err: Error) => void;
     }) => void;
+    authorize: (options: {
+      redirectUri: string;
+      prompt?: string;
+    }) => Promise<{ access_token: string; token_type: string; refresh_token?: string; expires_in: number; scope?: string; refresh_token_expires_in?: number }>;
+    getAccessToken: () => string | null;
     logout: (callback?: () => void) => void;
   };
   Share: {

@@ -59,7 +59,7 @@ export default function PointsPage() {
               <span className="summary-value">
                 {points
                   .filter((p) => p.type === "earn")
-                  .reduce((sum, p) => sum + (p.amount || 0), 0)
+                  .reduce((sum, p) => sum + (p.points || 0), 0)
                   .toLocaleString()}{" "}
                 P
               </span>
@@ -72,7 +72,7 @@ export default function PointsPage() {
               <span className="summary-value use">
                 {points
                   .filter((p) => p.type === "use")
-                  .reduce((sum, p) => sum + (p.amount || 0), 0)
+                  .reduce((sum, p) => sum + (p.points || 0), 0)
                   .toLocaleString()}{" "}
                 P
               </span>
@@ -133,11 +133,8 @@ export default function PointsPage() {
                 <div className="point-item-right">
                   <span className={`point-item-amount ${getPointColor(point.type)}`}>
                     {point.type === "earn" ? "+" : "-"}
-                    {(point.amount || 0).toLocaleString()} P
+                    {(point.points || 0).toLocaleString()} P
                   </span>
-                  {point.source && (
-                    <span className="point-item-source">{point.source}</span>
-                  )}
                 </div>
               </div>
             ))

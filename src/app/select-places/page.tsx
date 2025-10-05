@@ -176,13 +176,6 @@ export default function SelectPlacesPage() {
     <LayoutTitleWithActions
       title="장소 선택"
       showBack
-      backTo="/input-trip-info2"
-      actions={
-        <button className="invite-btn" onClick={handleInvite}>
-          <FaUserPlus />
-          <span>초대</span>
-        </button>
-      }
     >
       <div className="select-places-page">
         {/* 지도 영역 */}

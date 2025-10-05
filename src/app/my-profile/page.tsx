@@ -458,7 +458,6 @@ export default function MyProfilePage() {
               <Button
                 onClick={handleDeleteAccount}
                 disabled={isDeletingAccount || deleteConfirmText !== "회원탈퇴"}
-                variant="danger"
                 className="danger"
               >
                 {isDeletingAccount ? "탈퇴 중..." : "탈퇴하기"}

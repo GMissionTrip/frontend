@@ -25,7 +25,7 @@ export function useMe() {
       }
       
       // 백엔드에서 사용자 정보 가져오기
-      const response = await authService.validateToken(user.access_token);
+      const response = await authService.validateToken();
       return response;
     },
     enabled: !!user?.access_token,
