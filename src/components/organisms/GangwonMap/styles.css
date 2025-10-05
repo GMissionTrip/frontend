@@ -1,0 +1,43 @@
+.gangwon-map-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: var(--color-white, #FFFFFF);
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.gangwon-map {
+  max-width: 100%;
+  height: auto;
+}
+
+.region {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.region:hover {
+  opacity: 0.8;
+}
+
+.region.selected {
+  stroke: var(--color-primary-600, #FF5252);
+  stroke-width: 3;
+  filter: drop-shadow(0 2px 4px rgba(255, 107, 107, 0.3));
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  .gangwon-map-container {
+    padding: 0.75rem;
+  }
+  
+  .gangwon-map {
+    width: 100%;
+  }
+}
