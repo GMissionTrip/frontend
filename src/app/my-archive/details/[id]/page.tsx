@@ -13,9 +13,6 @@ declare global {
   }
 }
 
-// ✅ AWS 정적 export용 - 동적 라우팅 허용
-export const dynamicParams = true;
-
 export default function MyArchiveDetailsPage() {
   const params = useParams();
   const router = useRouter();

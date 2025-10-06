@@ -14,9 +14,6 @@ import FilmPhotosMission from "@/components/organisms/Missions/FilmPhotosMission
 import RandomChallengeMission from "@/components/organisms/Missions/RandomChallengeMission";
 import "./styles.css";
 
-// ✅ AWS 정적 export용 - 동적 라우팅 허용
-export const dynamicParams = true;
-
 export default function MissionDetailPage() {
   const params = useParams();
   const router = useRouter();
