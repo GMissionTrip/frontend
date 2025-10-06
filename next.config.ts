@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export", // ✅ 이 한 줄 추가! 정적 HTML로 내보내기
   images: {
-    domains: ['localhost'],
-    unoptimized: true, // 개발 환경에서 이미지 최적화 비활성화
+    domains: ["localhost"],
+    unoptimized: true, // S3/CloudFront에서 필요
   },
 };
 
