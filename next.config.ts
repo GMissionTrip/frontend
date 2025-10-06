@@ -1,10 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // ✅ 이 한 줄 추가! 정적 HTML로 내보내기
+  // output: "export", // Disabled for Vercel - uses server-side rendering for dynamic routes
   images: {
-    domains: ["localhost"],
-    unoptimized: true, // S3/CloudFront에서 필요
+    domains: ["localhost", "images.unsplash.com", "d23zwvh2kbhdec.cloudfront.net"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
 };
 
