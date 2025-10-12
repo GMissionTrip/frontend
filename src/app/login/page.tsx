@@ -70,7 +70,7 @@ export default function LoginPage() {
           },
           body: new URLSearchParams({
             grant_type: 'authorization_code',
-            client_id: process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY,
+            client_id: (process.env.NEXT_PUBLIC_KAKAO_JS_KEY || "d9d6f7271162bd0576c5b0d0baa9de5c") as string,
             redirect_uri: window.location.origin + "/login/kakao",
             code: code,
           }),
