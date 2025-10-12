@@ -106,7 +106,16 @@ export default function MyProfilePage() {
 
     setIsChangingPassword(true);
     try {
-      await authService.changePassword(currentPassword, newPassword);
+      // 현재 사용자 정보에서 username 가져오기
+      const { user } = useUserStore.getState();
+      const username = user?.id || "";
+      
+      if (!username) {
+        showToast("사용자 정보를 찾을 수 없습니다", "error");
+        return;
+      }
+
+      await authService.changePassword(username, currentPassword, newPassword);
       showToast("비밀번호가 변경되었습니다", "success");
       setShowPasswordModal(false);
       setCurrentPassword("");
