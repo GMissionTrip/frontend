@@ -11,6 +11,7 @@ import { useToast } from "@/components/ToastProvider";
 import useKakaoLogin from "@/hooks/useKakaoLogin";
 import useUser from "@/hooks/useUser";
 import useUserStore from "@/stores/userStore";
+import { authService } from "@/services/authService";
 import kakaoLogo from "@/assets/kakaoLogo.png";
 import logo from "@/assets/logo.png";
 import "./styles.css";
@@ -21,6 +22,13 @@ export default function LoginPage() {
   const { handleKakaoLogin } = useKakaoLogin();
   const { showToast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [loginMode, setLoginMode] = useState<'kakao' | 'password'>('kakao');
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    nickname: '',
+    email: ''
+  });
 
   // 카카오 리다이렉트 후 code 처리 (한 번만 실행)
   useEffect(() => {
@@ -183,6 +191,74 @@ export default function LoginPage() {
     handleNavigate("/others-journey");
   };
 
+  const handlePasswordLogin = async () => {
+    if (!formData.username || !formData.password) {
+      showToast("아이디와 비밀번호를 입력해주세요.", "error");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await authService.loginWithPassword(formData.username, formData.password);
+      
+      if (response.success) {
+        const { user, accessToken, refreshToken } = response.data;
+        
+        // 사용자 정보를 store에 저장
+        const { setUser } = useUserStore.getState();
+        setUser({
+          ...user,
+          access_token: accessToken,
+          refresh_token: refreshToken,
+        });
+        
+        showToast("로그인에 성공했습니다!", "success");
+        router.push("/main");
+      } else {
+        showToast(response.message || "로그인에 실패했습니다.", "error");
+      }
+    } catch (error) {
+      console.error("아이디/비밀번호 로그인 에러:", error);
+      showToast("로그인 중 오류가 발생했습니다.", "error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleRegister = async () => {
+    if (!formData.username || !formData.password || !formData.nickname || !formData.email) {
+      showToast("모든 필드를 입력해주세요.", "error");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await authService.register(
+        formData.username,
+        formData.password,
+        formData.nickname,
+        formData.email
+      );
+      
+      if (response.success) {
+        showToast("회원가입이 완료되었습니다. 로그인해주세요.", "success");
+        setLoginMode('password');
+        setFormData(prev => ({ ...prev, password: '' }));
+      } else {
+        showToast(response.message || "회원가입에 실패했습니다.", "error");
+      }
+    } catch (error) {
+      console.error("회원가입 에러:", error);
+      showToast("회원가입 중 오류가 발생했습니다.", "error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
   return (
     <LayoutTitleWithActions
       title="로그인/회원가입"
@@ -197,25 +273,111 @@ export default function LoginPage() {
         </div>
         
         <div className="login-container">
-          <Button 
-            variant="outline" 
-            size="large" 
-            onClick={handleGuestBrowse}
-            className="guest-button"
-          >
-            비회원으로 둘러보기
-          </Button>
-          
-          <Button 
-            variant="primary" 
-            size="large" 
-            onClick={handleKakaoLoginWithLoading}
-            disabled={isLoading}
-            className="kakao-button"
-            leftIcon={<Image src={kakaoLogo} alt="카카오 로고" className="kakao-logo" />}
-          >
-            {isLoading ? "로그인 중..." : "카카오로 3초만에 시작하기"}
-          </Button>
+          {/* 로그인 모드 선택 */}
+          <div className="login-mode-selector">
+            <button 
+              className={`mode-button ${loginMode === 'kakao' ? 'active' : ''}`}
+              onClick={() => setLoginMode('kakao')}
+            >
+              카카오 로그인
+            </button>
+            <button 
+              className={`mode-button ${loginMode === 'password' ? 'active' : ''}`}
+              onClick={() => setLoginMode('password')}
+            >
+              아이디/비밀번호
+            </button>
+          </div>
+
+          {loginMode === 'kakao' ? (
+            <>
+              <Button 
+                variant="outline" 
+                size="large" 
+                onClick={handleGuestBrowse}
+                className="guest-button"
+              >
+                비회원으로 둘러보기
+              </Button>
+              
+              <Button 
+                variant="primary" 
+                size="large" 
+                onClick={handleKakaoLoginWithLoading}
+                disabled={isLoading}
+                className="kakao-button"
+                leftIcon={<Image src={kakaoLogo} alt="카카오 로고" className="kakao-logo" />}
+              >
+                {isLoading ? "로그인 중..." : "카카오로 3초만에 시작하기"}
+              </Button>
+            </>
+          ) : (
+            <div className="password-login-form">
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="아이디"
+                  value={formData.username}
+                  onChange={(e) => handleInputChange('username', e.target.value)}
+                  className="form-input"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  placeholder="비밀번호"
+                  value={formData.password}
+                  onChange={(e) => handleInputChange('password', e.target.value)}
+                  className="form-input"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="닉네임"
+                  value={formData.nickname}
+                  onChange={(e) => handleInputChange('nickname', e.target.value)}
+                  className="form-input"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="email"
+                  placeholder="이메일"
+                  value={formData.email}
+                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  className="form-input"
+                />
+              </div>
+              
+              <div className="form-actions">
+                <Button 
+                  variant="primary" 
+                  size="large" 
+                  onClick={handlePasswordLogin}
+                  disabled={isLoading}
+                  className="login-button"
+                >
+                  {isLoading ? "로그인 중..." : "로그인"}
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  size="large" 
+                  onClick={handleRegister}
+                  disabled={isLoading}
+                  className="register-button"
+                >
+                  {isLoading ? "가입 중..." : "회원가입"}
+                </Button>
+              </div>
+              
+              <div className="test-account-info">
+                <p>테스트 계정:</p>
+                <p>아이디: test1, 비밀번호: gangchutest1234@</p>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="login-footer">

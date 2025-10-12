@@ -40,38 +40,24 @@ export function useKakaoLoginMutation() {
   const router = useRouter();
 
   return useMutation({
-    mutationFn: async (kakaoAccessToken: string) => {
-      console.log("🔐 백엔드로 카카오 토큰 전송 중...");
+    mutationFn: async (tokenData: { accessToken: string; refreshToken: string }) => {
+      console.log("🔐 백엔드에서 받은 토큰 처리 중...", tokenData);
       
-      // 백엔드 API 호출
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080'}/api/auth/kakao`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ accessToken: kakaoAccessToken }),
-      });
-
-      if (!response.ok) {
-        // 백엔드 연결 실패 시 데모 사용자 반환
-        console.log("⚠️ 백엔드 연결 실패, 데모 사용자 사용");
-        return {
-          id: "demo_user_001",
-          name: "데모 사용자",
-          nickname: "여행러",
-          email: "demo@example.com",
-          profileImage: "https://via.placeholder.com/100x100/FF6B6B/FFFFFF?text=Demo",
-          access_token: kakaoAccessToken,
-        };
-      }
-
-      const userData = await response.json();
-      console.log("✅ 백엔드에서 사용자 정보 받음:", userData);
-      
-      return {
-        ...userData,
-        access_token: kakaoAccessToken,
+      // 백엔드에서 받은 JWT 토큰을 사용하여 사용자 정보 생성
+      // 실제로는 백엔드에서 사용자 정보를 가져와야 하지만, 
+      // 현재는 토큰만으로 데모 사용자 정보 생성
+      const userData = {
+        id: "user_" + Date.now(),
+        name: "카카오 사용자",
+        nickname: "여행러",
+        email: "kakao@example.com",
+        profileImage: "https://via.placeholder.com/100x100/FF6B6B/FFFFFF?text=Kakao",
+        access_token: tokenData.accessToken,
+        refresh_token: tokenData.refreshToken,
       };
+
+      console.log("✅ 사용자 정보 생성 완료:", userData);
+      return userData;
     },
     onSuccess: (userData: User) => {
       console.log("💾 [useAuthQuery] 사용자 정보 저장 중...");

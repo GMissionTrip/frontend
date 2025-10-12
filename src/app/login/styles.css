@@ -105,6 +105,121 @@
   text-decoration: underline;
 }
 
+/* 로그인 모드 선택 */
+.login-mode-selector {
+  display: flex;
+  width: 100%;
+  margin-bottom: var(--spacing-6);
+  background: var(--color-gray-100);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-1);
+}
+
+.mode-button {
+  flex: 1;
+  padding: var(--spacing-3) var(--spacing-4);
+  border: none;
+  background: transparent;
+  color: var(--color-gray-600);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-button.active {
+  background: var(--color-white);
+  color: var(--color-primary-600);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mode-button:hover:not(.active) {
+  color: var(--color-gray-800);
+}
+
+/* 아이디/비밀번호 로그인 폼 */
+.password-login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--spacing-4);
+  border: 2px solid var(--color-gray-300);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  background: var(--color-white);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--color-gray-400);
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-2);
+}
+
+.login-button {
+  width: 100%;
+  background: var(--color-primary-500);
+  border: none;
+  color: var(--color-white);
+}
+
+.login-button:hover {
+  background: var(--color-primary-600);
+}
+
+.register-button {
+  width: 100%;
+  background: var(--color-white);
+  border: 2px solid var(--color-gray-300);
+  color: var(--color-gray-700);
+}
+
+.register-button:hover {
+  border-color: var(--color-primary-300);
+  color: var(--color-primary-600);
+}
+
+.test-account-info {
+  margin-top: var(--spacing-6);
+  padding: var(--spacing-4);
+  background: var(--color-blue-50);
+  border: 1px solid var(--color-blue-200);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.test-account-info p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-blue-800);
+}
+
+.test-account-info p:first-child {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-1);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .login-page-wrapper {

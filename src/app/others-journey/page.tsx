@@ -234,22 +234,22 @@ export default function OthersJourneyPage() {
                 <div className="post-header">
                   <div className="user-info">
                     <div className="user-avatar">
-                      {post.user.profileImage ? (
+                      {post.user?.profileImage ? (
                         <Image
                           src={post.user.profileImage}
-                          alt={post.user.nickname}
+                          alt={post.user.nickname || "사용자"}
                           width={40}
                           height={40}
                         />
                       ) : (
-                        post.user.nickname[0].toUpperCase()
+                        (post.user?.nickname || "U")[0].toUpperCase()
                       )}
                     </div>
                     <div className="user-details">
                       <div className="user-name">
-                        {post.user.nickname}{" "}
-                        {post.user.gender === "male" ? "♂" : post.user.gender === "female" ? "♀" : ""}{" "}
-                        #{post.user.level}
+                        {post.user?.nickname || "알 수 없는 사용자"}{" "}
+                        {post.user?.gender === "male" ? "♂" : post.user?.gender === "female" ? "♀" : ""}{" "}
+                        #{post.user?.level || 1}
                       </div>
                       <div className="post-meta">
                         <span className="location">{post.location}</span>
@@ -268,15 +268,15 @@ export default function OthersJourneyPage() {
 
                 {/* 해시태그 */}
                 <div className="post-tags">
-                  {post.tags.map((tag, index) => (
+                  {post.tags?.map((tag, index) => (
                     <span key={index} className="tag">
                       #{tag}
                     </span>
-                  ))}
+                  )) || []}
                 </div>
 
                 {/* 이미지 */}
-                {post.images.length > 0 && (
+                {post.images && post.images.length > 0 && (
                   <div className="post-image-container">
                     <Image
                       src={post.images[0]}
@@ -301,17 +301,17 @@ export default function OthersJourneyPage() {
                     onClick={() => handleLike(post.id)}
                   >
                     <FaHeart className={post.isLiked ? "filled" : ""} />
-                    <span>{post.likes}</span>
+                    <span>{post.likes || 0}</span>
                   </button>
                   <button 
                     className="action-button"
                     onClick={() => openCommentsModal(post)}
                   >
                     <FaComment />
-                    <span>{post.comments}</span>
+                    <span>{post.comments || 0}</span>
                   </button>
                   <div className="views-count">
-                    <span>👁 {post.views.toLocaleString()}</span>
+                    <span>👁 {(post.views || 0).toLocaleString()}</span>
                   </div>
                   <button 
                     className="action-button share-button"
